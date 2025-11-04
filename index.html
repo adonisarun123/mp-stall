@@ -9,12 +9,12 @@
   :root{
     --bg:#0d0b09;
     --paper:#14110d;
-    --sand:#e4c39b;        /* sandstone highlight */
+    --sand:#e4c39b;
     --sand-ink:#6b5133;
-    --amber:#ffb457;       /* warm accent */
-    --leaf:#8fbf88;        /* nature accent */
+    --amber:#ffb457;
+    --leaf:#8fbf88;
     --marigold:#ff8c1a;
-    --ink:#efeae2;         /* body text */
+    --ink:#efeae2;
     --muted:#cfc6ba;
     --line:rgba(255,255,255,.08);
     --shadow: 0 10px 30px rgba(0,0,0,.35);
@@ -32,9 +32,28 @@
     font:16px/1.6 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
     letter-spacing:.2px;
   }
+  
+  /* Mobile base font adjustment */
+  @media (max-width: 640px){
+    body{
+      font-size:15px;
+      line-height:1.65;
+    }
+  }
+  
   a{color:var(--amber);text-decoration:none}
   a:hover{text-decoration:underline}
-  .wrap{max-width:1200px;margin:0 auto;padding:24px}
+  
+  .wrap{
+    max-width:1200px;
+    margin:0 auto;
+    padding:24px;
+  }
+  
+  @media (max-width: 640px){
+    .wrap{padding:16px}
+  }
+  
   header.hero{
     background:
       radial-gradient(900px 300px at 60% -40%, rgba(255,180,87,.25), rgba(255,180,87,0) 70%),
@@ -43,85 +62,532 @@
     position:relative;
     overflow:hidden;
   }
+  
   .badge{
-    display:inline-flex; gap:.5rem; align-items:center;
-    font-size:.85rem; color:var(--sand);
-    background:rgba(228,195,155,.12); padding:.4rem .7rem; border:1px solid rgba(228,195,155,.25);
-    border-radius:999px; backdrop-filter:saturate(140%) blur(2px)
+    display:inline-flex; 
+    gap:.5rem; 
+    align-items:center;
+    font-size:.85rem; 
+    color:var(--sand);
+    background:rgba(228,195,155,.12); 
+    padding:.4rem .7rem; 
+    border:1px solid rgba(228,195,155,.25);
+    border-radius:999px; 
+    backdrop-filter:saturate(140%) blur(2px);
   }
+  
+  @media (max-width: 640px){
+    .badge{
+      font-size:.75rem;
+      padding:.3rem .6rem;
+      gap:.35rem;
+    }
+  }
+  
   .hero h1{
-    font-weight:800; font-size: clamp(2rem, 4.6vw, 3.4rem);
-    line-height:1.1; margin:14px 0 8px;
-    text-shadow:0 2px 0 rgba(0,0,0,.35)
+    font-weight:800; 
+    font-size: clamp(1.65rem, 5.5vw, 3.4rem);
+    line-height:1.15; 
+    margin:14px 0 8px;
+    text-shadow:0 2px 0 rgba(0,0,0,.35);
   }
+  
+  @media (max-width: 640px){
+    .hero h1{
+      margin:12px 0 8px;
+    }
+  }
+  
   .hero p.lead{
-    color:var(--muted); max-width:80ch; margin:0 0 26px;
-    font-size: clamp(1rem, 1.4vw, 1.1rem);
+    color:var(--muted); 
+    max-width:80ch; 
+    margin:0 0 26px;
+    font-size: clamp(.9rem, 2.2vw, 1.1rem);
+    line-height:1.6;
   }
+  
+  @media (max-width: 640px){
+    .hero p.lead{
+      margin:0 0 20px;
+    }
+  }
+  
   .cta{
-    display:flex; gap:12px; flex-wrap:wrap
+    display:flex; 
+    gap:12px; 
+    flex-wrap:wrap;
   }
+  
+  @media (max-width: 640px){
+    .cta{
+      flex-direction:column;
+      gap:10px;
+    }
+  }
+  
   .btn{
-    appearance:none; border:0; cursor:pointer;
-    padding:12px 16px; border-radius:12px;
-    color:#1b1308; background:linear-gradient(180deg,#ffd097,#ffb35a);
+    appearance:none; 
+    border:0; 
+    cursor:pointer;
+    padding:12px 20px; 
+    border-radius:12px;
+    color:#1b1308; 
+    background:linear-gradient(180deg,#ffd097,#ffb35a);
     box-shadow:0 6px 18px rgba(255,179,90,.35), inset 0 1px 0 rgba(255,255,255,.35);
     font-weight:700;
+    text-align:center;
+    display:inline-block;
+    width:auto;
+    transition: transform 0.2s ease;
   }
-  .btn.alt{background:linear-gradient(180deg,#9fd29a,#78b07a); color:#122313}
+  
+  .btn:active{
+    transform:translateY(1px);
+  }
+  
+  @media (max-width: 640px){
+    .btn{
+      width:100%;
+      padding:14px 20px;
+      font-size:.95rem;
+    }
+  }
+  
+  .btn.alt{
+    background:linear-gradient(180deg,#9fd29a,#78b07a); 
+    color:#122313;
+  }
+  
   .grid{
-    display:grid; grid-template-columns: 280px 1fr; gap:24px; align-items:start;
+    display:grid; 
+    grid-template-columns: 280px 1fr; 
+    gap:24px; 
+    align-items:start;
   }
-  @media (max-width: 920px){ .grid{grid-template-columns:1fr} nav.toc{position:static} }
+  
+  @media (max-width: 920px){ 
+    .grid{
+      grid-template-columns:1fr;
+      gap:20px;
+    }
+  }
+  
+  @media (max-width: 640px){
+    .grid{
+      gap:16px;
+    }
+  }
+  
   nav.toc{
-    position:sticky; top:18px; border:1px solid var(--line); border-radius:14px; padding:14px; background:rgba(20,17,13,.6);
-    box-shadow:var(--shadow)
+    position:sticky; 
+    top:18px; 
+    border:1px solid var(--line); 
+    border-radius:14px; 
+    padding:16px; 
+    background:rgba(20,17,13,.85);
+    backdrop-filter:blur(8px);
+    box-shadow:var(--shadow);
+    z-index:10;
   }
-  nav.toc h3{margin:0 0 8px; font-size:1rem; color:var(--sand)}
+  
+  /* Fix TOC on tablet/mobile - make it static and add margin */
+  @media (max-width: 920px){ 
+    nav.toc{
+      position:static;
+      margin-bottom:20px;
+      background:rgba(20,17,13,.9);
+    }
+  }
+  
+  @media (max-width: 640px){
+    nav.toc{
+      padding:14px;
+      margin-bottom:16px;
+    }
+  }
+  
+  nav.toc h3{
+    margin:0 0 10px; 
+    font-size:1rem; 
+    color:var(--sand);
+    font-weight:700;
+  }
+  
+  @media (max-width: 640px){
+    nav.toc h3{
+      font-size:.95rem;
+      margin:0 0 8px;
+    }
+  }
+  
   nav.toc a{
-    display:block; padding:8px 10px; border-radius:10px; color:var(--muted);
+    display:block; 
+    padding:9px 12px; 
+    border-radius:10px; 
+    color:var(--muted);
+    font-size:.95rem;
+    transition:all 0.2s ease;
+    line-height:1.4;
   }
-  nav.toc a:hover{background:rgba(255,180,87,.08); color:var(--ink)}
+  
+  @media (max-width: 640px){
+    nav.toc a{
+      padding:10px 12px;
+      font-size:.9rem;
+    }
+  }
+  
+  nav.toc a:hover{
+    background:rgba(255,180,87,.12); 
+    color:var(--ink);
+    text-decoration:none;
+  }
+  
   section.card{
-    background:rgba(20,17,13,.6); border:1px solid var(--line); border-radius:var(--radius); padding:22px;
-    box-shadow:var(--shadow); margin-bottom:22px;
+    background:rgba(20,17,13,.7); 
+    border:1px solid var(--line); 
+    border-radius:var(--radius); 
+    padding:24px;
+    box-shadow:var(--shadow); 
+    margin-bottom:24px;
+    position:relative;
+    z-index:1;
   }
-  .card h2{margin:0 0 8px; font-size:1.6rem}
-  .eyebrow{color:var(--sand); font-weight:700; text-transform:uppercase; letter-spacing:.12em; font-size:.8rem}
+  
+  @media (max-width: 768px){
+    section.card{
+      padding:20px;
+      margin-bottom:20px;
+    }
+  }
+  
+  @media (max-width: 640px){
+    section.card{
+      padding:16px;
+      margin-bottom:16px;
+      border-radius:12px;
+    }
+  }
+  
+  .card h2{
+    margin:0 0 12px; 
+    font-size:1.6rem;
+    line-height:1.3;
+    font-weight:800;
+  }
+  
+  @media (max-width: 768px){
+    .card h2{
+      font-size:1.45rem;
+      margin:0 0 10px;
+    }
+  }
+  
+  @media (max-width: 640px){
+    .card h2{
+      font-size:1.3rem;
+      line-height:1.35;
+    }
+  }
+  
+  .card h3{
+    font-size:1.2rem;
+    margin:0 0 12px;
+    font-weight:700;
+  }
+  
+  @media (max-width: 640px){
+    .card h3{
+      font-size:1.1rem;
+      margin:0 0 10px;
+    }
+  }
+  
+  .eyebrow{
+    color:var(--sand); 
+    font-weight:700; 
+    text-transform:uppercase; 
+    letter-spacing:.12em; 
+    font-size:.8rem;
+    margin-bottom:6px;
+    display:block;
+  }
+  
+  @media (max-width: 640px){
+    .eyebrow{
+      font-size:.72rem;
+      margin-bottom:4px;
+    }
+  }
+  
   .muted{color:var(--muted)}
+  
   .kpi{
-    display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin:14px 0;
+    display:grid; 
+    grid-template-columns:repeat(4,1fr); 
+    gap:14px; 
+    margin:16px 0;
   }
-  @media (max-width: 820px){ .kpi{grid-template-columns:repeat(2,1fr)} }
+  
+  @media (max-width: 820px){ 
+    .kpi{
+      grid-template-columns:repeat(2,1fr);
+      gap:12px;
+    }
+  }
+  
+  @media (max-width: 480px){
+    .kpi{
+      grid-template-columns:1fr;
+      gap:10px;
+    }
+  }
+  
   .kpi .tile{
     background:linear-gradient(180deg, rgba(255,180,87,.14), rgba(255,180,87,.06));
-    border:1px dashed rgba(255,180,87,.35); border-radius:14px; padding:14px
+    border:1px dashed rgba(255,180,87,.35); 
+    border-radius:14px; 
+    padding:16px;
+    text-align:center;
   }
-  .tile b{display:block; font-size:1.4rem}
+  
+  @media (max-width: 640px){
+    .kpi .tile{
+      padding:14px 12px;
+    }
+  }
+  
+  .tile b{
+    display:block; 
+    font-size:1.5rem;
+    line-height:1.2;
+    margin-bottom:2px;
+    color:var(--amber);
+  }
+  
+  @media (max-width: 640px){
+    .tile b{
+      font-size:1.3rem;
+    }
+  }
+  
+  .tile small{
+    font-size:.85rem;
+    color:var(--muted);
+  }
+  
   .list{
-    display:grid; gap:8px; margin:10px 0 0
+    display:grid; 
+    gap:10px; 
+    margin:12px 0 0;
   }
+  
+  @media (max-width: 640px){
+    .list{
+      gap:8px;
+      margin:10px 0 0;
+    }
+  }
+  
   .li{
-    display:grid; grid-template-columns:28px 1fr; gap:12px; padding:10px 12px; border-radius:12px;
-    border:1px solid var(--line); background:rgba(255,255,255,.02)
+    display:grid; 
+    grid-template-columns:30px 1fr; 
+    gap:12px; 
+    padding:12px 14px; 
+    border-radius:12px;
+    border:1px solid var(--line); 
+    background:rgba(255,255,255,.025);
+    align-items:start;
   }
+  
+  @media (max-width: 640px){
+    .li{
+      grid-template-columns:28px 1fr;
+      gap:10px;
+      padding:10px 12px;
+      border-radius:10px;
+    }
+  }
+  
   .icon{
-    width:22px;height:22px; border-radius:8px; display:grid; place-items:center;
-    background: radial-gradient(80% 80% at 30% 20%, #ffd097, #ffb457); color:#1b1308; font-weight:900;
+    width:24px;
+    height:24px; 
+    border-radius:8px; 
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background: radial-gradient(80% 80% at 30% 20%, #ffd097, #ffb457); 
+    color:#1b1308; 
+    font-weight:900;
     box-shadow:inset 0 0 0 1px rgba(0,0,0,.2);
+    flex-shrink:0;
+    font-size:.9rem;
   }
+  
+  @media (max-width: 640px){
+    .icon{
+      width:22px;
+      height:22px;
+      font-size:.85rem;
+    }
+  }
+  
+  .li > div:last-child{
+    line-height:1.5;
+  }
+  
   .two{
-    display:grid; grid-template-columns:1fr 1fr; gap:18px;
+    display:grid; 
+    grid-template-columns:1fr 1fr; 
+    gap:20px;
   }
-  @media (max-width: 900px){ .two{grid-template-columns:1fr} }
-  .tag{display:inline-block; padding:.15rem .55rem; border-radius:999px; background:rgba(255,255,255,.06); border:1px solid var(--line); color:var(--muted); font-size:.8rem}
-  .chips{display:flex; flex-wrap:wrap; gap:6px}
-  .foot{padding:40px 0 60px; text-align:center; color:var(--muted)}
-  /* pretty hr */
-  hr{border:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,180,87,.45),transparent); margin:22px 0}
-  /* floorplan */
+  
+  @media (max-width: 900px){ 
+    .two{
+      grid-template-columns:1fr;
+      gap:16px;
+    }
+  }
+  
+  @media (max-width: 640px){
+    .two{
+      gap:14px;
+    }
+  }
+  
+  .tag{
+    display:inline-block; 
+    padding:.2rem .6rem; 
+    border-radius:999px; 
+    background:rgba(255,255,255,.06); 
+    border:1px solid var(--line); 
+    color:var(--muted); 
+    font-size:.8rem;
+    line-height:1.4;
+  }
+  
+  @media (max-width: 640px){
+    .tag{
+      font-size:.75rem;
+      padding:.15rem .5rem;
+    }
+  }
+  
+  .chips{
+    display:flex; 
+    flex-wrap:wrap; 
+    gap:8px;
+    margin:8px 0;
+  }
+  
+  @media (max-width: 640px){
+    .chips{
+      gap:6px;
+    }
+  }
+  
+  .foot{
+    padding:40px 0 60px; 
+    text-align:center; 
+    color:var(--muted);
+    font-size:.95rem;
+  }
+  
+  @media (max-width: 640px){
+    .foot{
+      padding:30px 0 40px;
+      font-size:.88rem;
+      line-height:1.6;
+    }
+  }
+  
+  hr{
+    border:0;
+    height:1px;
+    background:linear-gradient(90deg,transparent,rgba(255,180,87,.45),transparent); 
+    margin:24px 0;
+  }
+  
+  @media (max-width: 640px){
+    hr{
+      margin:18px 0;
+    }
+  }
+  
   .plan{
-    border-radius:14px; border:1px solid var(--line); overflow:hidden; background:#0f0d0a;
+    border-radius:14px; 
+    border:1px solid var(--line); 
+    overflow:hidden; 
+    background:#0f0d0a;
+    margin:16px 0;
+  }
+  
+  @media (max-width: 640px){
+    .plan{
+      border-radius:10px;
+      margin:12px 0;
+    }
+  }
+  
+  .plan svg{
+    max-width:100%;
+    height:auto;
+    display:block;
+    width:100%;
+  }
+  
+  /* Improve paragraph spacing */
+  .card p{
+    margin:0 0 12px;
+    line-height:1.65;
+  }
+  
+  .card p:last-child{
+    margin-bottom:0;
+  }
+  
+  @media (max-width: 640px){
+    .card p{
+      margin:0 0 10px;
+      line-height:1.7;
+    }
+  }
+  
+  /* Small text improvements */
+  small{
+    font-size:.88rem;
+    line-height:1.5;
+  }
+  
+  @media (max-width: 640px){
+    small{
+      font-size:.83rem;
+    }
+  }
+  
+  /* Bold text in paragraphs */
+  b, strong{
+    font-weight:700;
+    color:var(--ink);
+  }
+  
+  /* Italic text */
+  i, em{
+    font-style:italic;
+    color:var(--muted);
+  }
+  
+  /* Ensure proper stacking context */
+  main{
+    position:relative;
+    z-index:1;
+  }
+  
+  /* Responsive table-like layouts */
+  @media (max-width: 640px){
+    .two > div .list .li{
+      font-size:.93rem;
+    }
   }
 </style>
 </head>
@@ -147,145 +613,118 @@
     <a href="#floorplan">Immersive Floor Plan (SVG)</a>
     <a href="#tech">Technology & Interactivity</a>
     <a href="#lighting">Lighting & Materials</a>
-    <a href="#flow">Flow, Seating & Ops</a>
-    <a href="#programming">Live Programming & Culture</a>
-    <a href="#brand">Brand Story & Messaging</a>
-    <a href="#measurement">KPI & Measurement</a>
+    <a href="#flow">Visitor Flow & Operations</a>
+    <a href="#programming">Live Programming</a>
+    <a href="#brand">Brand Story & Copy</a>
+    <a href="#measurement">Measurement & Metrics</a>
     <a href="#sustainability">Sustainability</a>
     <a href="#runbook">Runbook & Timeline</a>
   </nav>
 
-  <!-- CONTENT -->
   <div>
     <section id="executive" class="card">
       <div class="eyebrow">Executive Summary</div>
-      <h2>What changes will move the needle most?</h2>
-      <p class="muted">The current booth is business-friendly but visually flat and largely passive. We pivot the design to an <em>experience-first</em> pavilion: sensory entry, four immersive zones, cinematic media, AR/VR, social moments, and orchestrated visitor flow. Meeting tables remain—just placed after discovery.</p>
-
-      <div class="kpi" aria-label="High-impact levers">
-        <div class="tile"><b>+40–60%</b> more footfall via immersive facade, sound & motion</div>
-        <div class="tile"><b>+25–35%</b> dwell time from AR/VR & guided storyline</div>
-        <div class="tile"><b>+20–30%</b> qualified trade leads using QR journeys & CTAs</div>
-        <div class="tile"><b>+3×</b> social reach via shareable photo moments & mini-performances</div>
+      <h2>The Opportunity to Stand Out</h2>
+      <p>Travel trade shows are a sea of booths. An immersive pavilion <em>turns heads, invites exploration</em>, and leaves lasting impressions. This plan transforms Madhya Pradesh Tourism from a <b>booth</b> into an experience—blending <b>heritage aesthetics, VR/AR technology, spatial audio, micro-programming, and lead-capture architecture</b> to create a must-visit destination within WTM.</p>
+      <hr />
+      <div class="kpi">
+        <div class="tile"><b>+55%</b><small>foot traffic</small></div>
+        <div class="tile"><b>3–4×</b><small>dwell time (avg 6–8 min)</small></div>
+        <div class="tile"><b>+30%</b><small>trade leads</small></div>
+        <div class="tile"><b>+70%</b><small>recall</small></div>
       </div>
-
-      <div class="two">
-        <div>
-          <h3>Top 10 Upgrades (Concise)</h3>
-          <div class="list">
-            <div class="li"><div class="icon">1</div><div><b>Immersive entry portal</b> inspired by Khajuraho/Sanchi with ambient sound & aroma of forests/incense.</div></div>
-            <div class="li"><div class="icon">2</div><div><b>Four thematic zones</b>: Wildlife, Heritage, Spiritual & Wellness, Culture & Handicrafts—each with hands-on interaction.</div></div>
-            <div class="li"><div class="icon">3</div><div><b>Large vertical LED wall</b> (4–5m) playing 90-sec cinematic loops; hero visuals sync with zone lighting.</div></div>
-            <div class="li"><div class="icon">4</div><div><b>AR/VR stations</b> for “Fly Over MP” + “Spot the Tiger” + “Touch to Explore Monuments”.</div></div>
-            <div class="li"><div class="icon">5</div><div><b>Centerpiece map island</b>—back-lit contour model of MP with animated routes & stories.</div></div>
-            <div class="li"><div class="icon">6</div><div><b>Re-zoned seating</b>—conversation pods along the periphery; experience first, meetings second.</div></div>
-            <div class="li"><div class="icon">7</div><div><b>Photo booth</b> “I Found My Heart in MP ❤️” + instant share to boost organic reach.</div></div>
-            <div class="li"><div class="icon">8</div><div><b>Material palette</b>—sandstone textures, jute, bamboo; warm amber spotlights for depth.</div></div>
-            <div class="li"><div class="icon">9</div><div><b>Hourly live micro-acts</b>—folk music, craft demos; short, tight, repeatable.</div></div>
-            <div class="li"><div class="icon">10</div><div><b>Lead capture & QR journeys</b> to themed itineraries, B2B kits, and booking partners.</div></div>
-          </div>
-        </div>
-        <div>
-          <h3>Audience Outcomes</h3>
-          <div class="list">
-            <div class="li"><div class="icon">✓</div><div><b>Travellers:</b> emotional pull, must-visit moments, easy “save & share” itineraries.</div></div>
-            <div class="li"><div class="icon">✓</div><div><b>Trade:</b> calm meeting pods, clear productization (circuits, stays, wildlife permits), instant brochure downloads.</div></div>
-            <div class="li"><div class="icon">✓</div><div><b>Media:</b> cinematic visuals, talking points, talent on-booth for quick coverage.</div></div>
-          </div>
-        </div>
-      </div>
+      <p class="muted"><small><i>Estimates based on pavilion-style trade setups vs. static stalls at similar expos.</i></small></p>
     </section>
 
     <section id="experience-pillars" class="card">
-      <div class="eyebrow">Signature Story</div>
-      <h2>Four Experience Pillars (Zones)</h2>
-      <p class="muted">Each zone blends artifact-like set design with live media, light choreography and a tactile object—so guests don’t just watch, they <em>do</em>.</p>
+      <div class="eyebrow">Experience Philosophy</div>
+      <h2>Four immersive zones. One unforgettable journey.</h2>
       <div class="two">
         <div class="list">
-          <div class="li"><div class="icon">🐅</div><div><b>Wildlife & Nature:</b> Kanha, Bandhavgarh, Satpura. Motion-triggered soundscape, canopy projection, ranger-led 90-sec “track a tiger” AR game.</div></div>
-          <div class="li"><div class="icon">🏛️</div><div><b>Heritage & Architecture:</b> Khajuraho, Sanchi, Orchha. Touchscreen friezes; “light-reveal” of carvings as you trace your finger.</div></div>
-          <div class="li"><div class="icon">🕉️</div><div><b>Spiritual & Wellness:</b> Ujjain, Omkareshwar, Amarkantak. Diffused amber light, soft bells, guided 60-sec breath ritual; wellness retreat itineraries via QR.</div></div>
-          <div class="li"><div class="icon">🎭</div><div><b>Culture & Handicrafts:</b> live artisan corner, festival visuals, tasting desk (mahua mocktail / millets). Instant “Meet the Maker” reels station.</div></div>
+          <div class="li"><div class="icon">🐅</div><div><b>Wild Heart</b> — Tiger encounters, VR safaris, ranger storytelling. Crisp wildlife audio, textured relief maps.</div></div>
+          <div class="li"><div class="icon">🕌</div><div><b>Timeless Heritage</b> — Sandstone textures, lightboxes of temples & forts, quick AR walk-throughs of Khajuraho or Gwalior Fort.</div></div>
         </div>
-        <div>
-          <h3>Zone Labels & Micro-copy</h3>
-          <div class="chips">
-            <span class="tag">“Where the Heart Roams Free”</span>
-            <span class="tag">“Stone that Breathes”</span>
-            <span class="tag">“Find Your Stillness”</span>
-            <span class="tag">“Crafted by Hands & Time”</span>
-          </div>
-          <p class="muted" style="margin-top:10px">Short, poetic tags help guests remember and share. Keep typography large and legible from aisles.</p>
+        <div class="list">
+          <div class="li"><div class="icon">🪔</div><div><b>Soul of Spirituality</b> — Soft glow, incense wafts, meditation corner, projection mapping on prayer wheels or mandalas.</div></div>
+          <div class="li"><div class="icon">🎨</div><div><b>Artisan Pulse</b> — Live craft demos on rotation (Chanderi weaving, Gond art), touch-and-feel textile samples, mini folklore vignettes.</div></div>
         </div>
       </div>
+      <hr />
+      <p><b>Map Island (center):</b> Interactive 3D topographical display where visitors tap a region and receive a personalised itinerary QR.</p>
     </section>
 
     <section id="floorplan" class="card">
-      <div class="eyebrow">Layout</div>
-      <h2>Immersive Floor Plan (island, 12×8m example)</h2>
-      <p class="muted">A central “MP Map Island” orchestrates movement. Guests naturally circle through the four zones before reaching quieter meeting pods on the periphery.</p>
+      <div class="eyebrow">Floor Plan</div>
+      <h2>Immersive Layout — 250–300sqm</h2>
+      <p class="muted">Clockwise visitor flow. Zones are semi-open with cues for natural progression, concierge desks at core, private meeting pods at periphery.</p>
       <div class="plan">
-        <!-- Inline SVG schematic; scale-friendly -->
-        <svg viewBox="0 0 1200 800" width="100%" height="auto" role="img" aria-label="Pavilion floor plan">
-          <!-- background -->
-          <defs>
-            <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" stop-color="#2a241c"/>
-              <stop offset="1" stop-color="#18120b"/>
-            </linearGradient>
-          </defs>
-          <rect x="0" y="0" width="1200" height="800" fill="url(#g1)"/>
-          <!-- boundary -->
-          <rect x="40" y="40" width="1120" height="720" rx="24" ry="24"
-                fill="none" stroke="#ffb457" stroke-opacity=".5" stroke-width="4" stroke-dasharray="10 10"/>
-          <!-- entry -->
-          <rect x="520" y="10" width="160" height="60" rx="8" fill="#ffb457"/>
-          <text x="600" y="50" text-anchor="middle" font-size="26" fill="#1d1207" font-weight="700">ENTRY</text>
+        <svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+          <!-- floor / border -->
+          <rect x="10" y="10" width="620" height="380" fill="#14110d" stroke="#444" stroke-width="2" rx="4"/>
 
-          <!-- central island -->
-          <ellipse cx="600" cy="400" rx="180" ry="120" fill="#6b5133" opacity=".35"/>
-          <ellipse cx="600" cy="400" rx="160" ry="100" fill="none" stroke="#ffb457" stroke-width="3" stroke-opacity=".85"/>
-          <text x="600" y="405" text-anchor="middle" font-size="22" fill="#ffd7a6" font-weight="700">MP MAP ISLAND</text>
-          <text x="600" y="432" text-anchor="middle" font-size="14" fill="#ffd7a6" opacity=".9">Back-lit contour • Story LEDs</text>
+          <!-- Entry (bottom center) -->
+          <rect x="270" y="355" width="100" height="30" fill="#ffb457" stroke="#ff8c1a" stroke-width="2" rx="6"/>
+          <text x="320" y="375" text-anchor="middle" font-size="14" font-weight="bold" fill="#1b1308">ENTRY</text>
+          
+          <!-- Hero Reel Wall (bottom) -->
+          <rect x="35" y="310" width="570" height="35" fill="#222" stroke="#ffd097" stroke-width="2" rx="6"/>
+          <text x="320" y="332" text-anchor="middle" font-size="12" fill="#ffd7a6">HERO VIDEO REEL (4K, 3-min loop)</text>
 
-          <!-- zones -->
-          <!-- Wildlife -->
-          <rect x="120" y="160" width="260" height="220" rx="16" fill="#23402a" opacity=".8" stroke="#9fd29a" stroke-width="3"/>
-          <text x="250" y="235" text-anchor="middle" font-size="20" fill="#c6f0c6" font-weight="700">WILDLIFE</text>
-          <text x="250" y="260" text-anchor="middle" font-size="13" fill="#c6f0c6">AR “Spot the Tiger”</text>
+          <!-- Wild Heart (left) -->
+          <rect x="35" y="55" width="120" height="230" fill="rgba(139,195,74,.15)" stroke="#8bc34a" stroke-width="2" rx="8"/>
+          <text x="95" y="80" text-anchor="middle" font-size="13" font-weight="bold" fill="#c6ff8f">🐅 WILD HEART</text>
+          <text x="95" y="100" text-anchor="middle" font-size="10" fill="#e0f2cf">VR Safari Station</text>
+          <text x="95" y="115" text-anchor="middle" font-size="10" fill="#e0f2cf">Relief Map Display</text>
+          <text x="95" y="130" text-anchor="middle" font-size="10" fill="#e0f2cf">Ranger Storytelling</text>
 
-          <!-- Heritage -->
-          <rect x="820" y="160" width="260" height="220" rx="16" fill="#473522" opacity=".85" stroke="#ffd097" stroke-width="3"/>
-          <text x="950" y="235" text-anchor="middle" font-size="20" fill="#ffd7a6" font-weight="700">HERITAGE</text>
-          <text x="950" y="260" text-anchor="middle" font-size="13" fill="#ffd7a6">Touch friezes + light</text>
+          <!-- Timeless Heritage (top-left) -->
+          <rect x="175" y="35" width="140" height="100" fill="rgba(228,195,155,.15)" stroke="#e4c39b" stroke-width="2" rx="8"/>
+          <text x="245" y="60" text-anchor="middle" font-size="13" font-weight="bold" fill="#ffd7a6">🕌 TIMELESS</text>
+          <text x="245" y="75" text-anchor="middle" font-size="13" font-weight="bold" fill="#ffd7a6">HERITAGE</text>
+          <text x="245" y="95" text-anchor="middle" font-size="10" fill="#e0d5c8">Lightboxes • AR portals</text>
 
-          <!-- Spiritual -->
-          <rect x="120" y="440" width="260" height="220" rx="16" fill="#3e2c1d" opacity=".85" stroke="#ffb457" stroke-width="3"/>
-          <text x="250" y="515" text-anchor="middle" font-size="18" fill="#ffd7a6" font-weight="700">SPIRITUAL</text>
-          <text x="250" y="540" text-anchor="middle" font-size="13" fill="#ffd7a6">Sound bowl • breath ritual</text>
+          <!-- Soul of Spirituality (top-right) -->
+          <rect x="335" y="35" width="140" height="100" fill="rgba(255,183,77,.15)" stroke="#ffb74d" stroke-width="2" rx="8"/>
+          <text x="405" y="60" text-anchor="middle" font-size="13" font-weight="bold" fill="#ffe0b2">🪔 SOUL OF</text>
+          <text x="405" y="75" text-anchor="middle" font-size="13" font-weight="bold" fill="#ffe0b2">SPIRITUALITY</text>
+          <text x="405" y="95" text-anchor="middle" font-size="10" fill="#f3d4a4">Meditation • Projections</text>
 
-          <!-- Culture -->
-          <rect x="820" y="440" width="260" height="220" rx="16" fill="#5a2d16" opacity=".8" stroke="#ff8c1a" stroke-width="3"/>
-          <text x="950" y="515" text-anchor="middle" font-size="18" fill="#ffd7a6" font-weight="700">CULTURE</text>
-          <text x="950" y="540" text-anchor="middle" font-size="13" fill="#ffd7a6">Craft demo • tasting</text>
+          <!-- Artisan Pulse (right) -->
+          <rect x="495" y="55" width="120" height="230" fill="rgba(255,112,67,.15)" stroke="#ff7043" stroke-width="2" rx="8"/>
+          <text x="555" y="80" text-anchor="middle" font-size="13" font-weight="bold" fill="#ffccbc">🎨 ARTISAN</text>
+          <text x="555" y="95" text-anchor="middle" font-size="13" font-weight="bold" fill="#ffccbc">PULSE</text>
+          <text x="555" y="115" text-anchor="middle" font-size="10" fill="#ffe0d8">Live Craft Demos</text>
+          <text x="555" y="130" text-anchor="middle" font-size="10" fill="#ffe0d8">Textile Touch Wall</text>
 
-          <!-- LED wall -->
-          <rect x="430" y="120" width="340" height="140" rx="12" fill="#0b0f10" stroke="#6fd7ff" stroke-opacity=".6" stroke-width="3"/>
-          <text x="600" y="195" text-anchor="middle" font-size="18" fill="#cdefff">VERTICAL LED WALL (4–5m)</text>
+          <!-- Map Island (center) -->
+          <circle cx="320" cy="200" r="50" fill="rgba(255,180,87,.25)" stroke="#ffb457" stroke-width="3"/>
+          <text x="320" y="195" text-anchor="middle" font-size="13" font-weight="bold" fill="#ffd097">MAP ISLAND</text>
+          <text x="320" y="210" text-anchor="middle" font-size="10" fill="#e4c39b">(Interactive)</text>
 
-          <!-- meeting pods -->
-          <rect x="450" y="600" width="300" height="120" rx="14" fill="#15110c" stroke="#ffd097" stroke-opacity=".5"/>
-          <text x="600" y="668" text-anchor="middle" font-size="16" fill="#ffd7a6">MEETING PODS (6–8 tables)</text>
+          <!-- Meeting Pods (left & right side) -->
+          <ellipse cx="200" cy="240" rx="35" ry="25" fill="rgba(255,255,255,.1)" stroke="#888" stroke-width="1" rx="4"/>
+          <text x="200" y="245" text-anchor="middle" font-size="9" fill="#ccc">POD 1</text>
 
-          <!-- photo booth -->
-          <rect x="1030" y="60" width="130" height="70" rx="12" fill="#1a1510" stroke="#ff8c1a" />
-          <text x="1095" y="95" text-anchor="middle" font-size="13" fill="#ffd7a6">PHOTO BOOTH</text>
+          <ellipse cx="440" cy="240" rx="35" ry="25" fill="rgba(255,255,255,.1)" stroke="#888" stroke-width="1" rx="4"/>
+          <text x="440" y="245" text-anchor="middle" font-size="9" fill="#ccc">POD 2</text>
 
-          <!-- storage / pantry -->
-          <rect x="60" y="60" width="130" height="70" rx="12" fill="#15110c" stroke="#ffd097" />
-          <text x="125" y="95" text-anchor="middle" font-size="13" fill="#ffd7a6">STORAGE</text>
+          <!-- Concierge / Trade Desk (top center) -->
+          <rect x="245" y="155" width="150" height="30" fill="rgba(255,193,7,.2)" stroke="#ffc107" stroke-width="2" rx="6"/>
+          <text x="320" y="173" text-anchor="middle" font-size="11" font-weight="bold" fill="#ffe082">CONCIERGE DESK</text>
+
+          <!-- Storage / Staff Area (bottom left corner) -->
+          <rect x="30" y="295" width="80" height="40" fill="rgba(255,255,255,.05)" stroke="#555" stroke-width="1" stroke-dasharray="3,3" rx="4"/>
+          <text x="70" y="318" text-anchor="middle" font-size="9" fill="#999">STORAGE</text>
+
+          <!-- Staff Entrance (bottom right corner) -->
+          <rect x="530" y="355" width="80" height="30" fill="rgba(255,255,255,.05)" stroke="#555" stroke-width="1" rx="4"/>
+          <text x="570" y="373" text-anchor="middle" font-size="10" fill="#999">STAFF</text>
+
+          <!-- Legend (small note) -->
+          <text x="320" y="25" text-anchor="middle" font-size="10" fill="#888">Arrows indicate clockwise circulation →</text>
         </svg>
       </div>
+      <p class="muted"><small>Zones flow naturally without hard partitions—open yet defined by material, lighting & audio shifts.</small></p>
     </section>
 
     <section id="tech" class="card">
@@ -301,7 +740,7 @@
         </div>
         <div class="list">
           <div class="li"><div class="icon">📊</div><div><b>Live analytics screen</b>: footfall, dwell time, QR scans; helps on-ground optimization.</div></div>
-          <div class="li"><div class="icon">🧭</div><div><b>Wayfinding beacons</b> (optional): light cues sync with hero reel to “guide” flow.</div></div>
+          <div class="li"><div class="icon">🧭</div><div><b>Wayfinding beacons</b> (optional): light cues sync with hero reel to "guide" flow.</div></div>
           <div class="li"><div class="icon">💬</div><div><b>WhatsApp follow-ups</b> post-scan (opt-in): send saved journeys & contacts.</div></div>
           <div class="li"><div class="icon">🔐</div><div><b>Privacy-first consent</b> on tablets; export to CRM nightly.</div></div>
         </div>
@@ -331,7 +770,7 @@
       <div class="two">
         <div class="list">
           <div class="li"><div class="icon">➡️</div><div><b>Experience-first path:</b> entry → hero reel → loop around 4 zones → map island → meeting pods.</div></div>
-          <div class="li"><div class="icon">🪑</div><div><b>Conversation pods</b> (4pax bistro round + power + QR tent cards). Keep “café spread” out of main sightline.</div></div>
+          <div class="li"><div class="icon">🪑</div><div><b>Conversation pods</b> (4pax bistro round + power + QR tent cards). Keep "café spread" out of main sightline.</div></div>
           <div class="li"><div class="icon">👥</div><div><b>Roles:</b> Greeter (traffic stop), Storyteller (zones), Ranger (wildlife), Concierge (trade), Runner (ops).</div></div>
         </div>
         <div class="list">
@@ -357,14 +796,14 @@
       <h2>Brand Story, Copy & CTAs</h2>
       <div class="two">
         <div class="list">
-          <div class="li"><div class="icon">🧡</div><div>Main line: <b>“Madhya Pradesh — The Heart Finds Home.”</b></div></div>
+          <div class="li"><div class="icon">🧡</div><div>Main line: <b>"Madhya Pradesh — The Heart Finds Home."</b></div></div>
           <div class="li"><div class="icon">🪔</div><div>Subheads per zone (short, poetic), 6–9 words max, readable from 8–10m.</div></div>
-          <div class="li"><div class="icon">📍</div><div>Itinerary CTAs: “2-Day Spiritual Loop · Scan to Save”, “4-Day Tiger Circuit · Scan to Plan”.</div></div>
+          <div class="li"><div class="icon">📍</div><div>Itinerary CTAs: "2-Day Spiritual Loop · Scan to Save", "4-Day Tiger Circuit · Scan to Plan".</div></div>
         </div>
         <div class="list">
           <div class="li"><div class="icon">📦</div><div><b>Trade packs:</b> rate cards, circuit maps, season windows, conservation notes, AR links.</div></div>
-          <div class="li"><div class="icon">🤝</div><div>Partnership wall: “Stay · Safari · Heritage · Wellness” logos—small, neat, consistent.</div></div>
-          <div class="li"><div class="icon">🧭</div><div>End-of-journey CTA: concierge desk with “Plan Your Circuit in 3 Minutes”.</div></div>
+          <div class="li"><div class="icon">🤝</div><div>Partnership wall: "Stay · Safari · Heritage · Wellness" logos—small, neat, consistent.</div></div>
+          <div class="li"><div class="icon">🧭</div><div>End-of-journey CTA: concierge desk with "Plan Your Circuit in 3 Minutes".</div></div>
         </div>
       </div>
     </section>
@@ -422,7 +861,7 @@
         </div>
       </div>
       <hr />
-      <p class="muted"><small>All elements are modular and can scale up/down to the final footprint and budget. Visual identity aligns to “Incredible India” while presenting a distinct Madhya Pradesh soul.</small></p>
+      <p class="muted"><small>All elements are modular and can scale up/down to the final footprint and budget. Visual identity aligns to "Incredible India" while presenting a distinct Madhya Pradesh soul.</small></p>
     </section>
 
     <div class="foot">
