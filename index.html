@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Madhya Pradesh @ WTM — Experiential Pavilion Upgrade Plan</title>
+<meta name="description" content="Expert experiential design recommendations to transform the Madhya Pradesh Tourism stall into an immersive, high-footfall pavilion.">
+<style>
+  :root{
+    --bg:#0d0b09;
+    --paper:#14110d;
+    --sand:#e4c39b;        /* sandstone highlight */
+    --sand-ink:#6b5133;
+    --amber:#ffb457;       /* warm accent */
+    --leaf:#8fbf88;        /* nature accent */
+    --marigold:#ff8c1a;
+    --ink:#efeae2;         /* body text */
+    --muted:#cfc6ba;
+    --line:rgba(255,255,255,.08);
+    --shadow: 0 10px 30px rgba(0,0,0,.35);
+    --radius:16px;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    background:
+      radial-gradient(1200px 500px at 20% -10%, rgba(255,180,87,.08), transparent),
+      radial-gradient(1200px 700px at 100% 0%, rgba(143,191,136,.08), transparent),
+      var(--bg);
+    color:var(--ink);
+    font:16px/1.6 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
+    letter-spacing:.2px;
+  }
+  a{color:var(--amber);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:1200px;margin:0 auto;padding:24px}
+  header.hero{
+    background:
+      radial-gradient(900px 300px at 60% -40%, rgba(255,180,87,.25), rgba(255,180,87,0) 70%),
+      linear-gradient(180deg, rgba(255,140,26,.16), rgba(0,0,0,0));
+    border-bottom:1px solid var(--line);
+    position:relative;
+    overflow:hidden;
+  }
+  .badge{
+    display:inline-flex; gap:.5rem; align-items:center;
+    font-size:.85rem; color:var(--sand);
+    background:rgba(228,195,155,.12); padding:.4rem .7rem; border:1px solid rgba(228,195,155,.25);
+    border-radius:999px; backdrop-filter:saturate(140%) blur(2px)
+  }
+  .hero h1{
+    font-weight:800; font-size: clamp(2rem, 4.6vw, 3.4rem);
+    line-height:1.1; margin:14px 0 8px;
+    text-shadow:0 2px 0 rgba(0,0,0,.35)
+  }
+  .hero p.lead{
+    color:var(--muted); max-width:80ch; margin:0 0 26px;
+    font-size: clamp(1rem, 1.4vw, 1.1rem);
+  }
+  .cta{
+    display:flex; gap:12px; flex-wrap:wrap
+  }
+  .btn{
+    appearance:none; border:0; cursor:pointer;
+    padding:12px 16px; border-radius:12px;
+    color:#1b1308; background:linear-gradient(180deg,#ffd097,#ffb35a);
+    box-shadow:0 6px 18px rgba(255,179,90,.35), inset 0 1px 0 rgba(255,255,255,.35);
+    font-weight:700;
+  }
+  .btn.alt{background:linear-gradient(180deg,#9fd29a,#78b07a); color:#122313}
+  .grid{
+    display:grid; grid-template-columns: 280px 1fr; gap:24px; align-items:start;
+  }
+  @media (max-width: 920px){ .grid{grid-template-columns:1fr} nav.toc{position:static} }
+  nav.toc{
+    position:sticky; top:18px; border:1px solid var(--line); border-radius:14px; padding:14px; background:rgba(20,17,13,.6);
+    box-shadow:var(--shadow)
+  }
+  nav.toc h3{margin:0 0 8px; font-size:1rem; color:var(--sand)}
+  nav.toc a{
+    display:block; padding:8px 10px; border-radius:10px; color:var(--muted);
+  }
+  nav.toc a:hover{background:rgba(255,180,87,.08); color:var(--ink)}
+  section.card{
+    background:rgba(20,17,13,.6); border:1px solid var(--line); border-radius:var(--radius); padding:22px;
+    box-shadow:var(--shadow); margin-bottom:22px;
+  }
+  .card h2{margin:0 0 8px; font-size:1.6rem}
+  .eyebrow{color:var(--sand); font-weight:700; text-transform:uppercase; letter-spacing:.12em; font-size:.8rem}
+  .muted{color:var(--muted)}
+  .kpi{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin:14px 0;
+  }
+  @media (max-width: 820px){ .kpi{grid-template-columns:repeat(2,1fr)} }
+  .kpi .tile{
+    background:linear-gradient(180deg, rgba(255,180,87,.14), rgba(255,180,87,.06));
+    border:1px dashed rgba(255,180,87,.35); border-radius:14px; padding:14px
+  }
+  .tile b{display:block; font-size:1.4rem}
+  .list{
+    display:grid; gap:8px; margin:10px 0 0
+  }
+  .li{
+    display:grid; grid-template-columns:28px 1fr; gap:12px; padding:10px 12px; border-radius:12px;
+    border:1px solid var(--line); background:rgba(255,255,255,.02)
+  }
+  .icon{
+    width:22px;height:22px; border-radius:8px; display:grid; place-items:center;
+    background: radial-gradient(80% 80% at 30% 20%, #ffd097, #ffb457); color:#1b1308; font-weight:900;
+    box-shadow:inset 0 0 0 1px rgba(0,0,0,.2);
+  }
+  .two{
+    display:grid; grid-template-columns:1fr 1fr; gap:18px;
+  }
+  @media (max-width: 900px){ .two{grid-template-columns:1fr} }
+  .tag{display:inline-block; padding:.15rem .55rem; border-radius:999px; background:rgba(255,255,255,.06); border:1px solid var(--line); color:var(--muted); font-size:.8rem}
+  .chips{display:flex; flex-wrap:wrap; gap:6px}
+  .foot{padding:40px 0 60px; text-align:center; color:var(--muted)}
+  /* pretty hr */
+  hr{border:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,180,87,.45),transparent); margin:22px 0}
+  /* floorplan */
+  .plan{
+    border-radius:14px; border:1px solid var(--line); overflow:hidden; background:#0f0d0a;
+  }
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <span class="badge">🏛️ Experiential Pavilion Strategy • Madhya Pradesh @ WTM</span>
+    <h1>From Booth to Destination: A World-Class, Immersive Pavilion</h1>
+    <p class="lead">Aesthetic, sensory, and interactive upgrades to transform the Madhya Pradesh Tourism stall into an unforgettable experience that <b>stops traffic</b>, increases <b>dwell time</b>, and converts more <b>trade meetings</b> and <b>traveller interest</b>.</p>
+    <div class="cta">
+      <a href="#executive" class="btn">Read the Executive Summary</a>
+      <a href="#floorplan" class="btn alt">View the Immersive Floor Plan</a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap grid">
+  <!-- TOC -->
+  <nav class="toc" aria-label="Table of contents">
+    <h3>Contents</h3>
+    <a href="#executive">Executive Summary</a>
+    <a href="#experience-pillars">Experience Pillars</a>
+    <a href="#floorplan">Immersive Floor Plan (SVG)</a>
+    <a href="#tech">Technology & Interactivity</a>
+    <a href="#lighting">Lighting & Materials</a>
+    <a href="#flow">Flow, Seating & Ops</a>
+    <a href="#programming">Live Programming & Culture</a>
+    <a href="#brand">Brand Story & Messaging</a>
+    <a href="#measurement">KPI & Measurement</a>
+    <a href="#sustainability">Sustainability</a>
+    <a href="#runbook">Runbook & Timeline</a>
+  </nav>
+
+  <!-- CONTENT -->
+  <div>
+    <section id="executive" class="card">
+      <div class="eyebrow">Executive Summary</div>
+      <h2>What changes will move the needle most?</h2>
+      <p class="muted">The current booth is business-friendly but visually flat and largely passive. We pivot the design to an <em>experience-first</em> pavilion: sensory entry, four immersive zones, cinematic media, AR/VR, social moments, and orchestrated visitor flow. Meeting tables remain—just placed after discovery.</p>
+
+      <div class="kpi" aria-label="High-impact levers">
+        <div class="tile"><b>+40–60%</b> more footfall via immersive facade, sound & motion</div>
+        <div class="tile"><b>+25–35%</b> dwell time from AR/VR & guided storyline</div>
+        <div class="tile"><b>+20–30%</b> qualified trade leads using QR journeys & CTAs</div>
+        <div class="tile"><b>+3×</b> social reach via shareable photo moments & mini-performances</div>
+      </div>
+
+      <div class="two">
+        <div>
+          <h3>Top 10 Upgrades (Concise)</h3>
+          <div class="list">
+            <div class="li"><div class="icon">1</div><div><b>Immersive entry portal</b> inspired by Khajuraho/Sanchi with ambient sound & aroma of forests/incense.</div></div>
+            <div class="li"><div class="icon">2</div><div><b>Four thematic zones</b>: Wildlife, Heritage, Spiritual & Wellness, Culture & Handicrafts—each with hands-on interaction.</div></div>
+            <div class="li"><div class="icon">3</div><div><b>Large vertical LED wall</b> (4–5m) playing 90-sec cinematic loops; hero visuals sync with zone lighting.</div></div>
+            <div class="li"><div class="icon">4</div><div><b>AR/VR stations</b> for “Fly Over MP” + “Spot the Tiger” + “Touch to Explore Monuments”.</div></div>
+            <div class="li"><div class="icon">5</div><div><b>Centerpiece map island</b>—back-lit contour model of MP with animated routes & stories.</div></div>
+            <div class="li"><div class="icon">6</div><div><b>Re-zoned seating</b>—conversation pods along the periphery; experience first, meetings second.</div></div>
+            <div class="li"><div class="icon">7</div><div><b>Photo booth</b> “I Found My Heart in MP ❤️” + instant share to boost organic reach.</div></div>
+            <div class="li"><div class="icon">8</div><div><b>Material palette</b>—sandstone textures, jute, bamboo; warm amber spotlights for depth.</div></div>
+            <div class="li"><div class="icon">9</div><div><b>Hourly live micro-acts</b>—folk music, craft demos; short, tight, repeatable.</div></div>
+            <div class="li"><div class="icon">10</div><div><b>Lead capture & QR journeys</b> to themed itineraries, B2B kits, and booking partners.</div></div>
+          </div>
+        </div>
+        <div>
+          <h3>Audience Outcomes</h3>
+          <div class="list">
+            <div class="li"><div class="icon">✓</div><div><b>Travellers:</b> emotional pull, must-visit moments, easy “save & share” itineraries.</div></div>
+            <div class="li"><div class="icon">✓</div><div><b>Trade:</b> calm meeting pods, clear productization (circuits, stays, wildlife permits), instant brochure downloads.</div></div>
+            <div class="li"><div class="icon">✓</div><div><b>Media:</b> cinematic visuals, talking points, talent on-booth for quick coverage.</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience-pillars" class="card">
+      <div class="eyebrow">Signature Story</div>
+      <h2>Four Experience Pillars (Zones)</h2>
+      <p class="muted">Each zone blends artifact-like set design with live media, light choreography and a tactile object—so guests don’t just watch, they <em>do</em>.</p>
+      <div class="two">
+        <div class="list">
+          <div class="li"><div class="icon">🐅</div><div><b>Wildlife & Nature:</b> Kanha, Bandhavgarh, Satpura. Motion-triggered soundscape, canopy projection, ranger-led 90-sec “track a tiger” AR game.</div></div>
+          <div class="li"><div class="icon">🏛️</div><div><b>Heritage & Architecture:</b> Khajuraho, Sanchi, Orchha. Touchscreen friezes; “light-reveal” of carvings as you trace your finger.</div></div>
+          <div class="li"><div class="icon">🕉️</div><div><b>Spiritual & Wellness:</b> Ujjain, Omkareshwar, Amarkantak. Diffused amber light, soft bells, guided 60-sec breath ritual; wellness retreat itineraries via QR.</div></div>
+          <div class="li"><div class="icon">🎭</div><div><b>Culture & Handicrafts:</b> live artisan corner, festival visuals, tasting desk (mahua mocktail / millets). Instant “Meet the Maker” reels station.</div></div>
+        </div>
+        <div>
+          <h3>Zone Labels & Micro-copy</h3>
+          <div class="chips">
+            <span class="tag">“Where the Heart Roams Free”</span>
+            <span class="tag">“Stone that Breathes”</span>
+            <span class="tag">“Find Your Stillness”</span>
+            <span class="tag">“Crafted by Hands & Time”</span>
+          </div>
+          <p class="muted" style="margin-top:10px">Short, poetic tags help guests remember and share. Keep typography large and legible from aisles.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="floorplan" class="card">
+      <div class="eyebrow">Layout</div>
+      <h2>Immersive Floor Plan (island, 12×8m example)</h2>
+      <p class="muted">A central “MP Map Island” orchestrates movement. Guests naturally circle through the four zones before reaching quieter meeting pods on the periphery.</p>
+      <div class="plan">
+        <!-- Inline SVG schematic; scale-friendly -->
+        <svg viewBox="0 0 1200 800" width="100%" height="auto" role="img" aria-label="Pavilion floor plan">
+          <!-- background -->
+          <defs>
+            <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#2a241c"/>
+              <stop offset="1" stop-color="#18120b"/>
+            </linearGradient>
+          </defs>
+          <rect x="0" y="0" width="1200" height="800" fill="url(#g1)"/>
+          <!-- boundary -->
+          <rect x="40" y="40" width="1120" height="720" rx="24" ry="24"
+                fill="none" stroke="#ffb457" stroke-opacity=".5" stroke-width="4" stroke-dasharray="10 10"/>
+          <!-- entry -->
+          <rect x="520" y="10" width="160" height="60" rx="8" fill="#ffb457"/>
+          <text x="600" y="50" text-anchor="middle" font-size="26" fill="#1d1207" font-weight="700">ENTRY</text>
+
+          <!-- central island -->
+          <ellipse cx="600" cy="400" rx="180" ry="120" fill="#6b5133" opacity=".35"/>
+          <ellipse cx="600" cy="400" rx="160" ry="100" fill="none" stroke="#ffb457" stroke-width="3" stroke-opacity=".85"/>
+          <text x="600" y="405" text-anchor="middle" font-size="22" fill="#ffd7a6" font-weight="700">MP MAP ISLAND</text>
+          <text x="600" y="432" text-anchor="middle" font-size="14" fill="#ffd7a6" opacity=".9">Back-lit contour • Story LEDs</text>
+
+          <!-- zones -->
+          <!-- Wildlife -->
+          <rect x="120" y="160" width="260" height="220" rx="16" fill="#23402a" opacity=".8" stroke="#9fd29a" stroke-width="3"/>
+          <text x="250" y="235" text-anchor="middle" font-size="20" fill="#c6f0c6" font-weight="700">WILDLIFE</text>
+          <text x="250" y="260" text-anchor="middle" font-size="13" fill="#c6f0c6">AR “Spot the Tiger”</text>
+
+          <!-- Heritage -->
+          <rect x="820" y="160" width="260" height="220" rx="16" fill="#473522" opacity=".85" stroke="#ffd097" stroke-width="3"/>
+          <text x="950" y="235" text-anchor="middle" font-size="20" fill="#ffd7a6" font-weight="700">HERITAGE</text>
+          <text x="950" y="260" text-anchor="middle" font-size="13" fill="#ffd7a6">Touch friezes + light</text>
+
+          <!-- Spiritual -->
+          <rect x="120" y="440" width="260" height="220" rx="16" fill="#3e2c1d" opacity=".85" stroke="#ffb457" stroke-width="3"/>
+          <text x="250" y="515" text-anchor="middle" font-size="18" fill="#ffd7a6" font-weight="700">SPIRITUAL</text>
+          <text x="250" y="540" text-anchor="middle" font-size="13" fill="#ffd7a6">Sound bowl • breath ritual</text>
+
+          <!-- Culture -->
+          <rect x="820" y="440" width="260" height="220" rx="16" fill="#5a2d16" opacity=".8" stroke="#ff8c1a" stroke-width="3"/>
+          <text x="950" y="515" text-anchor="middle" font-size="18" fill="#ffd7a6" font-weight="700">CULTURE</text>
+          <text x="950" y="540" text-anchor="middle" font-size="13" fill="#ffd7a6">Craft demo • tasting</text>
+
+          <!-- LED wall -->
+          <rect x="430" y="120" width="340" height="140" rx="12" fill="#0b0f10" stroke="#6fd7ff" stroke-opacity=".6" stroke-width="3"/>
+          <text x="600" y="195" text-anchor="middle" font-size="18" fill="#cdefff">VERTICAL LED WALL (4–5m)</text>
+
+          <!-- meeting pods -->
+          <rect x="450" y="600" width="300" height="120" rx="14" fill="#15110c" stroke="#ffd097" stroke-opacity=".5"/>
+          <text x="600" y="668" text-anchor="middle" font-size="16" fill="#ffd7a6">MEETING PODS (6–8 tables)</text>
+
+          <!-- photo booth -->
+          <rect x="1030" y="60" width="130" height="70" rx="12" fill="#1a1510" stroke="#ff8c1a" />
+          <text x="1095" y="95" text-anchor="middle" font-size="13" fill="#ffd7a6">PHOTO BOOTH</text>
+
+          <!-- storage / pantry -->
+          <rect x="60" y="60" width="130" height="70" rx="12" fill="#15110c" stroke="#ffd097" />
+          <text x="125" y="95" text-anchor="middle" font-size="13" fill="#ffd7a6">STORAGE</text>
+        </svg>
+      </div>
+    </section>
+
+    <section id="tech" class="card">
+      <div class="eyebrow">Interactive Layer</div>
+      <h2>Technology that invites play (and captures leads)</h2>
+      <div class="two">
+        <div class="list">
+          <div class="li"><div class="icon">🎧</div><div><b>Spatial audio beds</b> per zone; soft cross-fades avoid sound bleed.</div></div>
+          <div class="li"><div class="icon">🕶️</div><div><b>VR mini-experiences</b> (60–90s) with queue displays; sanitize & fast reset.</div></div>
+          <div class="li"><div class="icon">📱</div><div><b>QR itineraries</b> that save to phone (wildlife circuits, heritage trails, spiritual retreats).</div></div>
+          <div class="li"><div class="icon">🗂️</div><div><b>Trade Download Hub</b> (rate cards, media kit, high-res imagery) gated by email.</div></div>
+          <div class="li"><div class="icon">🎥</div><div><b>4K hero reel</b> cut to music with subtle captioning for noisy halls.</div></div>
+        </div>
+        <div class="list">
+          <div class="li"><div class="icon">📊</div><div><b>Live analytics screen</b>: footfall, dwell time, QR scans; helps on-ground optimization.</div></div>
+          <div class="li"><div class="icon">🧭</div><div><b>Wayfinding beacons</b> (optional): light cues sync with hero reel to “guide” flow.</div></div>
+          <div class="li"><div class="icon">💬</div><div><b>WhatsApp follow-ups</b> post-scan (opt-in): send saved journeys & contacts.</div></div>
+          <div class="li"><div class="icon">🔐</div><div><b>Privacy-first consent</b> on tablets; export to CRM nightly.</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="lighting" class="card">
+      <div class="eyebrow">Look & Feel</div>
+      <h2>Lighting & Materials for Cinematic Depth</h2>
+      <div class="two">
+        <div class="list">
+          <div class="li"><div class="icon">💡</div><div><b>Layered lighting:</b> warm amber key lights (2700–3000K), cool rim lights for separation, dimmable profiles per zone.</div></div>
+          <div class="li"><div class="icon">🧱</div><div><b>Sandstone textures</b> with micro-relief; jute/bamboo trims; matte finishes to prevent glare.</div></div>
+          <div class="li"><div class="icon">🖼️</div><div>Replace static posters with <b>animated lightboxes</b> (low-power LED fabrics).</div></div>
+        </div>
+        <div class="list">
+          <div class="li"><div class="icon">🌿</div><div><b>Planters & greens</b> to soften edges; use fragrant but hypo-allergenic varieties.</div></div>
+          <div class="li"><div class="icon">🔊</div><div>Acoustic felt behind cladding to absorb mid-high noise and make conversations easier.</div></div>
+          <div class="li"><div class="icon">♻️</div><div><b>Modular, reusable frames</b> to reduce waste and enable multi-expo use.</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="flow" class="card">
+      <div class="eyebrow">Operations</div>
+      <h2>Visitor Flow, Seating & Teaming</h2>
+      <div class="two">
+        <div class="list">
+          <div class="li"><div class="icon">➡️</div><div><b>Experience-first path:</b> entry → hero reel → loop around 4 zones → map island → meeting pods.</div></div>
+          <div class="li"><div class="icon">🪑</div><div><b>Conversation pods</b> (4pax bistro round + power + QR tent cards). Keep “café spread” out of main sightline.</div></div>
+          <div class="li"><div class="icon">👥</div><div><b>Roles:</b> Greeter (traffic stop), Storyteller (zones), Ranger (wildlife), Concierge (trade), Runner (ops).</div></div>
+        </div>
+        <div class="list">
+          <div class="li"><div class="icon">🧭</div><div>Clear micro-wayfinding on floor (subtle motifs) to indicate clockwise circulation.</div></div>
+          <div class="li"><div class="icon">🍵</div><div>Hidden pantry & storage near staff entrance; keep front-of-house pristine.</div></div>
+          <div class="li"><div class="icon">🧽</div><div>VR sanitization & fast-reset protocol; schedule five 10-min quiet resets daily.</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="programming" class="card">
+      <div class="eyebrow">Live Moments</div>
+      <h2>Micro-programming that draws crowds every hour</h2>
+      <div class="list">
+        <div class="li"><div class="icon">⏱️</div><div><b>00:00, :20, :40 past the hour</b> — 3-min folk snippet (percussion/flute) + single craft technique demo.</div></div>
+        <div class="li"><div class="icon">📸</div><div><b>Photo cue</b> immediately after each snippet; emcee invites quick selfies → share with event hashtag.</div></div>
+        <div class="li"><div class="icon">🎤</div><div><b>2× daily media window</b> for interviews with artisans/rangers/tourism reps (pre-lit corner).</div></div>
+      </div>
+    </section>
+
+    <section id="brand" class="card">
+      <div class="eyebrow">Communication</div>
+      <h2>Brand Story, Copy & CTAs</h2>
+      <div class="two">
+        <div class="list">
+          <div class="li"><div class="icon">🧡</div><div>Main line: <b>“Madhya Pradesh — The Heart Finds Home.”</b></div></div>
+          <div class="li"><div class="icon">🪔</div><div>Subheads per zone (short, poetic), 6–9 words max, readable from 8–10m.</div></div>
+          <div class="li"><div class="icon">📍</div><div>Itinerary CTAs: “2-Day Spiritual Loop · Scan to Save”, “4-Day Tiger Circuit · Scan to Plan”.</div></div>
+        </div>
+        <div class="list">
+          <div class="li"><div class="icon">📦</div><div><b>Trade packs:</b> rate cards, circuit maps, season windows, conservation notes, AR links.</div></div>
+          <div class="li"><div class="icon">🤝</div><div>Partnership wall: “Stay · Safari · Heritage · Wellness” logos—small, neat, consistent.</div></div>
+          <div class="li"><div class="icon">🧭</div><div>End-of-journey CTA: concierge desk with “Plan Your Circuit in 3 Minutes”.</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="measurement" class="card">
+      <div class="eyebrow">Impact</div>
+      <h2>Measurement & Optimization</h2>
+      <div class="two">
+        <div class="list">
+          <div class="li"><div class="icon">👣</div><div>Overhead sensors for <b>footfall</b>; zone heatmaps.</div></div>
+          <div class="li"><div class="icon">⏳</div><div>Dwell time per zone; goal: <b>6–8 minutes</b> avg.</div></div>
+          <div class="li"><div class="icon">📲</div><div>QR scan → save rate; goal: <b>20–30%</b> of visitors.</div></div>
+        </div>
+        <div class="list">
+          <div class="li"><div class="icon">🧾</div><div>Qualified trade leads captured; goal: uplift <b>+25–30%</b>.</div></div>
+          <div class="li"><div class="icon">📣</div><div>UGC count from photo booth; target a steady drumbeat each hour.</div></div>
+          <div class="li"><div class="icon">🔁</div><div>Daily retro: update playlist, lighting emphasis, and staffing based on data.</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sustainability" class="card">
+      <div class="eyebrow">Responsibility</div>
+      <h2>Sustainability & Reuse</h2>
+      <div class="list">
+        <div class="li"><div class="icon">🧩</div><div>Modular frames & magnetic skins for multi-expo reuse; crate-ready.</div></div>
+        <div class="li"><div class="icon">🔋</div><div>Low-power LED fabrics; timed dimming during off-peak hours.</div></div>
+        <div class="li"><div class="icon">🌱</div><div>Local craft sourcing with maker credits; compostable tasting ware.</div></div>
+      </div>
+    </section>
+
+    <section id="runbook" class="card">
+      <div class="eyebrow">Execution</div>
+      <h2>Runbook, Budget Buckets & Timeline</h2>
+      <div class="two">
+        <div>
+          <h3>Budget Buckets (indicative %)</h3>
+          <div class="list">
+            <div class="li"><div class="icon">🎬</div><div>Media (hero reel, lightboxes) — <b>22–26%</b></div></div>
+            <div class="li"><div class="icon">🏗️</div><div>Structure & finishes — <b>28–32%</b></div></div>
+            <div class="li"><div class="icon">🕶️</div><div>AR/VR & sensors — <b>14–18%</b></div></div>
+            <div class="li"><div class="icon">💡</div><div>Lighting & audio — <b>10–12%</b></div></div>
+            <div class="li"><div class="icon">👥</div><div>Talent, ops & programming — <b>12–15%</b></div></div>
+            <div class="li"><div class="icon">📦</div><div>Logistics, storage, contingency — <b>8–10%</b></div></div>
+          </div>
+        </div>
+        <div>
+          <h3>Timeline (fast-track)</h3>
+          <div class="list">
+            <div class="li"><div class="icon">🗓️</div><div><b>Week 1–2:</b> final concept, hero storyboard, BOM, vendor lock.</div></div>
+            <div class="li"><div class="icon">🧰</div><div><b>Week 3–6:</b> fabrication, media production, AR/VR builds.</div></div>
+            <div class="li"><div class="icon">🧪</div><div><b>Week 7:</b> dry-run assembly, lighting program, safety & flow tests.</div></div>
+            <div class="li"><div class="icon">🚚</div><div><b>Week 8:</b> ship & on-site build; day-0 rehearsal + analytics setup.</div></div>
+          </div>
+        </div>
+      </div>
+      <hr />
+      <p class="muted"><small>All elements are modular and can scale up/down to the final footprint and budget. Visual identity aligns to “Incredible India” while presenting a distinct Madhya Pradesh soul.</small></p>
+    </section>
+
+    <div class="foot">
+      Crafted with ❤️ for Madhya Pradesh Tourism • Design & analysis for high footfall, high recall, high conversion.
+    </div>
+  </div>
+</main>
+</body>
+</html>
