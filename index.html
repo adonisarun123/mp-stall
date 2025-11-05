@@ -89,27 +89,27 @@
     font-weight:800; 
     font-size: clamp(1.65rem, 5.5vw, 3.4rem);
     line-height:1.15; 
-    margin:14px 0 8px;
+    margin:16px 0 12px;
     text-shadow:0 2px 0 rgba(0,0,0,.35);
   }
   
   @media (max-width: 640px){
     .hero h1{
-      margin:12px 0 8px;
+      margin:14px 0 10px;
     }
   }
   
   .hero p.lead{
     color:var(--muted); 
     max-width:80ch; 
-    margin:0 0 26px;
+    margin:0 0 28px;
     font-size: clamp(.9rem, 2.2vw, 1.1rem);
-    line-height:1.6;
+    line-height:1.65;
   }
   
   @media (max-width: 640px){
     .hero p.lead{
-      margin:0 0 20px;
+      margin:0 0 22px;
     }
   }
   
@@ -162,20 +162,20 @@
   .grid{
     display:grid; 
     grid-template-columns: 300px 1fr; 
-    gap:24px; 
+    gap:32px; 
     align-items:start;
   }
   
   @media (max-width: 920px){ 
     .grid{
       grid-template-columns:1fr;
-      gap:20px;
+      gap:24px;
     }
   }
   
   @media (max-width: 640px){
     .grid{
-      gap:16px;
+      gap:20px;
     }
   }
   
@@ -247,30 +247,30 @@
     background:rgba(20,17,13,.7); 
     border:1px solid var(--line); 
     border-radius:var(--radius); 
-    padding:24px;
+    padding:28px;
     box-shadow:var(--shadow); 
-    margin-bottom:24px;
+    margin-bottom:40px;
     position:relative;
     z-index:1;
   }
   
   @media (max-width: 768px){
     section.card{
-      padding:20px;
-      margin-bottom:20px;
+      padding:24px;
+      margin-bottom:32px;
     }
   }
   
   @media (max-width: 640px){
     section.card{
-      padding:16px;
-      margin-bottom:16px;
+      padding:18px;
+      margin-bottom:24px;
       border-radius:12px;
     }
   }
   
   .card h2{
-    margin:0 0 12px; 
+    margin:0 0 16px; 
     font-size:1.6rem;
     line-height:1.3;
     font-weight:800;
@@ -279,7 +279,7 @@
   @media (max-width: 768px){
     .card h2{
       font-size:1.45rem;
-      margin:0 0 10px;
+      margin:0 0 14px;
     }
   }
   
@@ -287,19 +287,27 @@
     .card h2{
       font-size:1.3rem;
       line-height:1.35;
+      margin:0 0 12px;
     }
   }
   
   .card h3{
     font-size:1.2rem;
-    margin:0 0 12px;
+    margin:28px 0 14px;
     font-weight:700;
+  }
+  
+  .card h3:first-of-type{
+    margin-top:20px;
   }
   
   @media (max-width: 640px){
     .card h3{
       font-size:1.1rem;
-      margin:0 0 10px;
+      margin:24px 0 12px;
+    }
+    .card h3:first-of-type{
+      margin-top:16px;
     }
   }
   
@@ -309,14 +317,14 @@
     text-transform:uppercase; 
     letter-spacing:.12em; 
     font-size:.8rem;
-    margin-bottom:6px;
+    margin-bottom:8px;
     display:block;
   }
   
   @media (max-width: 640px){
     .eyebrow{
       font-size:.72rem;
-      margin-bottom:4px;
+      margin-bottom:6px;
     }
   }
   
@@ -326,13 +334,14 @@
     display:grid; 
     grid-template-columns:repeat(4,1fr); 
     gap:14px; 
-    margin:16px 0;
+    margin:20px 0;
   }
   
   @media (max-width: 820px){ 
     .kpi{
       grid-template-columns:repeat(2,1fr);
       gap:12px;
+      margin:18px 0;
     }
   }
   
@@ -340,6 +349,7 @@
     .kpi{
       grid-template-columns:1fr;
       gap:10px;
+      margin:16px 0;
     }
   }
   
@@ -379,13 +389,13 @@
   .list{
     display:grid; 
     gap:10px; 
-    margin:12px 0 0;
+    margin:16px 0;
   }
   
   @media (max-width: 640px){
     .list{
       gap:8px;
-      margin:10px 0 0;
+      margin:14px 0;
     }
   }
   
@@ -393,7 +403,7 @@
     display:grid; 
     grid-template-columns:30px 1fr; 
     gap:12px; 
-    padding:12px 14px; 
+    padding:14px 16px; 
     border-radius:12px;
     border:1px solid var(--line); 
     background:rgba(255,255,255,.025);
@@ -404,7 +414,7 @@
     .li{
       grid-template-columns:28px 1fr;
       gap:10px;
-      padding:10px 12px;
+      padding:12px 14px;
       border-radius:10px;
     }
   }
@@ -450,19 +460,19 @@
   .two{
     display:grid; 
     grid-template-columns:1fr 1fr; 
-    gap:20px;
+    gap:24px;
   }
   
   @media (max-width: 900px){ 
     .two{
       grid-template-columns:1fr;
-      gap:16px;
+      gap:20px;
     }
   }
   
   @media (max-width: 640px){
     .two{
-      gap:14px;
+      gap:16px;
     }
   }
   
@@ -488,27 +498,29 @@
     display:flex; 
     flex-wrap:wrap; 
     gap:8px;
-    margin:8px 0;
+    margin:12px 0;
   }
   
   @media (max-width: 640px){
     .chips{
       gap:6px;
+      margin:10px 0;
     }
   }
   
   .foot{
-    padding:40px 0 60px; 
+    padding:50px 0 70px; 
     text-align:center; 
     color:var(--muted);
     font-size:.95rem;
+    line-height:1.7;
   }
   
   @media (max-width: 640px){
     .foot{
-      padding:30px 0 40px;
+      padding:40px 0 50px;
       font-size:.88rem;
-      line-height:1.6;
+      line-height:1.7;
     }
   }
   
@@ -516,12 +528,12 @@
     border:0;
     height:1px;
     background:linear-gradient(90deg,transparent,rgba(255,180,87,.45),transparent); 
-    margin:24px 0;
+    margin:28px 0;
   }
   
   @media (max-width: 640px){
     hr{
-      margin:18px 0;
+      margin:20px 0;
     }
   }
   
@@ -530,13 +542,13 @@
     border:1px solid var(--line); 
     overflow:hidden; 
     background:#0f0d0a;
-    margin:16px 0;
+    margin:20px 0;
   }
   
   @media (max-width: 640px){
     .plan{
       border-radius:10px;
-      margin:12px 0;
+      margin:16px 0;
     }
   }
   
@@ -548,8 +560,8 @@
   }
   
   .card p{
-    margin:0 0 12px;
-    line-height:1.65;
+    margin:0 0 16px;
+    line-height:1.7;
   }
   
   .card p:last-child{
@@ -558,7 +570,7 @@
   
   @media (max-width: 640px){
     .card p{
-      margin:0 0 10px;
+      margin:0 0 14px;
       line-height:1.7;
     }
   }
@@ -599,7 +611,7 @@
   .compare-table{
     width:100%;
     border-collapse:collapse;
-    margin:16px 0;
+    margin:20px 0;
     background:rgba(0,0,0,.2);
     border-radius:12px;
     overflow:hidden;
@@ -610,7 +622,7 @@
   }
   
   .compare-table th{
-    padding:14px 16px;
+    padding:16px 18px;
     text-align:left;
     font-weight:700;
     color:var(--sand);
@@ -618,9 +630,9 @@
   }
   
   .compare-table td{
-    padding:12px 16px;
+    padding:14px 18px;
     border-bottom:1px solid rgba(255,255,255,.05);
-    line-height:1.6;
+    line-height:1.7;
   }
   
   .compare-table tr:last-child td{
@@ -633,7 +645,7 @@
     }
     .compare-table th,
     .compare-table td{
-      padding:10px 12px;
+      padding:12px 14px;
     }
   }
   
@@ -670,17 +682,18 @@
   .quote-block{
     background:rgba(255,180,87,.08);
     border-left:4px solid var(--amber);
-    padding:16px 20px;
-    margin:20px 0;
+    padding:20px 24px;
+    margin:24px 0;
     border-radius:8px;
     font-style:italic;
     color:var(--muted);
+    line-height:1.7;
   }
   
   @media (max-width: 640px){
     .quote-block{
-      padding:12px 16px;
-      margin:16px 0;
+      padding:16px 18px;
+      margin:20px 0;
     }
   }
 </style>
