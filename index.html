@@ -19,6 +19,8 @@
     --line:rgba(255,255,255,.08);
     --shadow: 0 10px 30px rgba(0,0,0,.35);
     --radius:16px;
+    --red-alert:#ff6b6b;
+    --green-good:#8fbf88;
   }
   *{box-sizing:border-box}
   html,body{height:100%}
@@ -33,7 +35,6 @@
     letter-spacing:.2px;
   }
   
-  /* Mobile base font adjustment */
   @media (max-width: 640px){
     body{
       font-size:15px;
@@ -160,7 +161,7 @@
   
   .grid{
     display:grid; 
-    grid-template-columns: 280px 1fr; 
+    grid-template-columns: 300px 1fr; 
     gap:24px; 
     align-items:start;
   }
@@ -190,7 +191,6 @@
     z-index:10;
   }
   
-  /* Fix TOC on tablet/mobile - make it static and add margin */
   @media (max-width: 920px){ 
     nav.toc{
       position:static;
@@ -225,7 +225,7 @@
     padding:9px 12px; 
     border-radius:10px; 
     color:var(--muted);
-    font-size:.95rem;
+    font-size:.9rem;
     transition:all 0.2s ease;
     line-height:1.4;
   }
@@ -233,7 +233,7 @@
   @media (max-width: 640px){
     nav.toc a{
       padding:10px 12px;
-      font-size:.9rem;
+      font-size:.88rem;
     }
   }
   
@@ -436,6 +436,17 @@
     line-height:1.5;
   }
   
+  /* Good/Bad indicators */
+  .good{
+    border-left:3px solid var(--green-good);
+    background:rgba(143,191,136,.08);
+  }
+  
+  .bad{
+    border-left:3px solid var(--red-alert);
+    background:rgba(255,107,107,.08);
+  }
+  
   .two{
     display:grid; 
     grid-template-columns:1fr 1fr; 
@@ -536,7 +547,6 @@
     width:100%;
   }
   
-  /* Improve paragraph spacing */
   .card p{
     margin:0 0 12px;
     line-height:1.65;
@@ -553,7 +563,6 @@
     }
   }
   
-  /* Small text improvements */
   small{
     font-size:.88rem;
     line-height:1.5;
@@ -565,28 +574,113 @@
     }
   }
   
-  /* Bold text in paragraphs */
   b, strong{
     font-weight:700;
     color:var(--ink);
   }
   
-  /* Italic text */
   i, em{
     font-style:italic;
     color:var(--muted);
   }
   
-  /* Ensure proper stacking context */
   main{
     position:relative;
     z-index:1;
   }
   
-  /* Responsive table-like layouts */
   @media (max-width: 640px){
     .two > div .list .li{
       font-size:.93rem;
+    }
+  }
+  
+  /* Comparison table */
+  .compare-table{
+    width:100%;
+    border-collapse:collapse;
+    margin:16px 0;
+    background:rgba(0,0,0,.2);
+    border-radius:12px;
+    overflow:hidden;
+  }
+  
+  .compare-table thead{
+    background:linear-gradient(180deg, rgba(255,180,87,.2), rgba(255,180,87,.1));
+  }
+  
+  .compare-table th{
+    padding:14px 16px;
+    text-align:left;
+    font-weight:700;
+    color:var(--sand);
+    border-bottom:1px solid var(--line);
+  }
+  
+  .compare-table td{
+    padding:12px 16px;
+    border-bottom:1px solid rgba(255,255,255,.05);
+    line-height:1.6;
+  }
+  
+  .compare-table tr:last-child td{
+    border-bottom:none;
+  }
+  
+  @media (max-width: 768px){
+    .compare-table{
+      font-size:.9rem;
+    }
+    .compare-table th,
+    .compare-table td{
+      padding:10px 12px;
+    }
+  }
+  
+  @media (max-width: 640px){
+    .compare-table{
+      display:block;
+      overflow-x:auto;
+      -webkit-overflow-scrolling:touch;
+    }
+    .compare-table thead{
+      display:none;
+    }
+    .compare-table tr{
+      display:block;
+      margin-bottom:12px;
+      background:rgba(255,255,255,.02);
+      border-radius:8px;
+      padding:8px;
+    }
+    .compare-table td{
+      display:block;
+      padding:8px;
+      border:none;
+    }
+    .compare-table td:before{
+      content:attr(data-label);
+      font-weight:700;
+      color:var(--sand);
+      display:block;
+      margin-bottom:4px;
+    }
+  }
+  
+  .quote-block{
+    background:rgba(255,180,87,.08);
+    border-left:4px solid var(--amber);
+    padding:16px 20px;
+    margin:20px 0;
+    border-radius:8px;
+    font-style:italic;
+    color:var(--muted);
+  }
+  
+  @media (max-width: 640px){
+    .quote-block{
+      padding:12px 16px;
+      margin:16px 0;
     }
   }
 </style>
@@ -594,63 +688,116 @@
 <body>
 <header class="hero">
   <div class="wrap">
-    <span class="badge">🏛️ Experiential Pavilion Strategy • Madhya Pradesh @ WTM</span>
+    <span class="badge">🏛️ Expert Analysis & Transformation Plan • Madhya Pradesh @ WTM</span>
     <h1>From Booth to Destination: A World-Class, Immersive Pavilion</h1>
-    <p class="lead">Aesthetic, sensory, and interactive upgrades to transform the Madhya Pradesh Tourism stall into an unforgettable experience that <b>stops traffic</b>, increases <b>dwell time</b>, and converts more <b>trade meetings</b> and <b>traveller interest</b>.</p>
+    <p class="lead">Complete strategic analysis and experiential design recommendations to transform the Madhya Pradesh Tourism stall into an unforgettable experience that <b>stops traffic</b>, increases <b>dwell time</b>, and converts more <b>trade meetings</b> and <b>traveller interest</b>.</p>
     <div class="cta">
-      <a href="#executive" class="btn">Read the Executive Summary</a>
-      <a href="#floorplan" class="btn alt">View the Immersive Floor Plan</a>
+      <a href="#current-analysis" class="btn">View Current Analysis</a>
+      <a href="#floorplan" class="btn alt">See the Transformation Plan</a>
     </div>
   </div>
 </header>
 
 <main class="wrap grid">
-  <!-- TOC -->
   <nav class="toc" aria-label="Table of contents">
     <h3>Contents</h3>
+    <a href="#current-analysis">Current Stall Analysis</a>
+    <a href="#strengths">Current Strengths</a>
+    <a href="#weaknesses">Weaknesses & Opportunities</a>
     <a href="#executive">Executive Summary</a>
     <a href="#experience-pillars">Experience Pillars</a>
-    <a href="#floorplan">Immersive Floor Plan (SVG)</a>
+    <a href="#entry-experience">Entry Experience Design</a>
+    <a href="#floorplan">Immersive Floor Plan</a>
     <a href="#tech">Technology & Interactivity</a>
     <a href="#lighting">Lighting & Materials</a>
+    <a href="#staff-presentation">Staff & Cultural Ambassadors</a>
+    <a href="#artifacts">Artifacts & Displays</a>
     <a href="#flow">Visitor Flow & Operations</a>
     <a href="#programming">Live Programming</a>
     <a href="#brand">Brand Story & Copy</a>
     <a href="#measurement">Measurement & Metrics</a>
     <a href="#sustainability">Sustainability</a>
     <a href="#runbook">Runbook & Timeline</a>
+    <a href="#comparison">Before vs After Summary</a>
   </nav>
 
   <div>
+    <section id="current-analysis" class="card">
+      <div class="eyebrow">Current State Review</div>
+      <h2>Expert Analysis of Existing Stall</h2>
+      <p>A comprehensive assessment reveals both commendable elements and significant opportunities for transformation into a world-class pavilion experience.</p>
+    </section>
+
+    <section id="strengths" class="card">
+      <div class="eyebrow">What's Working</div>
+      <h2>Current Strengths to Build Upon</h2>
+      <div class="list">
+        <div class="li good"><div class="icon">✓</div><div><b>Cultural Consistency:</b> Use of Indian architectural elements (arches, chhatris, traditional pillars) and the tagline "The Heart of Incredible India" maintains strong brand alignment with national identity.</div></div>
+        <div class="li good"><div class="icon">✓</div><div><b>Well-organized Layout:</b> Circular tables facilitate business conversations, creating a trade-friendly structure suitable for meetings and networking.</div></div>
+        <div class="li good"><div class="icon">✓</div><div><b>Lighting & Openness:</b> The stall avoids feeling boxed-in, maintaining visibility and allowing natural walk-through flow for passing visitors.</div></div>
+        <div class="li good"><div class="icon">✓</div><div><b>Visual Branding:</b> Madhya Pradesh logo and "Incredible India" co-branding are clearly visible from a distance, supporting strong recall value.</div></div>
+      </div>
+    </section>
+
+    <section id="weaknesses" class="card">
+      <div class="eyebrow">Critical Gaps</div>
+      <h2>Weaknesses and Missed Opportunities</h2>
+      <div class="list">
+        <div class="li bad"><div class="icon">⚠</div><div><b>Flat Visual Experience:</b> The booth reads as a 2D printed backdrop with café furniture rather than an immersive experience. No depth, texture, or sensory elements that would make someone stop and explore.</div></div>
+        <div class="li bad"><div class="icon">⚠</div><div><b>Lack of Interactive Zones:</b> Everything is static—brochures, posters, conversations. No digital interactivity, no sensory elements (sound, aroma, motion), and no storytelling moments.</div></div>
+        <div class="li bad"><div class="icon">⚠</div><div><b>Poor Lighting Design:</b> Harsh, generic overhead lighting doesn't dramatize elements or highlight key zones like wildlife, heritage, or spiritual tourism.</div></div>
+        <div class="li bad"><div class="icon">⚠</div><div><b>Ambiguous Zoning:</b> No clear thematic zones (Heritage / Wildlife / Spiritual / Adventure). Visitors don't know where to go or what to discover first.</div></div>
+        <div class="li bad"><div class="icon">⚠</div><div><b>Furniture Dominance:</b> Café-style tables consume too much floor space, making it feel like a waiting area rather than an experience zone.</div></div>
+        <div class="li bad"><div class="icon">⚠</div><div><b>Digital Screen Placement:</b> The digital map screen is small and positioned too low; it doesn't attract crowds or visually narrate Madhya Pradesh's story.</div></div>
+      </div>
+    </section>
+
     <section id="executive" class="card">
       <div class="eyebrow">Executive Summary</div>
       <h2>The Opportunity to Stand Out</h2>
       <p>Travel trade shows are a sea of booths. An immersive pavilion <em>turns heads, invites exploration</em>, and leaves lasting impressions. This plan transforms Madhya Pradesh Tourism from a <b>booth</b> into an experience—blending <b>heritage aesthetics, VR/AR technology, spatial audio, micro-programming, and lead-capture architecture</b> to create a must-visit destination within WTM.</p>
+      
+      <div class="quote-block">
+        "Madhya Pradesh already holds the most diverse tourism offering in India—wildlife, spirituality, culture, and heritage. To match that richness on the world stage, the WTM stall needs to transform from a trade booth into a living experience—a place where global travelers don't just learn about MP, but feel it."
+      </div>
+      
       <hr />
       <div class="kpi">
         <div class="tile"><b>+55%</b><small>foot traffic</small></div>
         <div class="tile"><b>3–4×</b><small>dwell time (avg 6–8 min)</small></div>
         <div class="tile"><b>+30%</b><small>trade leads</small></div>
-        <div class="tile"><b>+70%</b><small>recall</small></div>
+        <div class="tile"><b>+70%</b><small>brand recall</small></div>
       </div>
       <p class="muted"><small><i>Estimates based on pavilion-style trade setups vs. static stalls at similar expos.</i></small></p>
     </section>
 
     <section id="experience-pillars" class="card">
       <div class="eyebrow">Experience Philosophy</div>
-      <h2>Four immersive zones. One unforgettable journey.</h2>
+      <h2>Four Immersive Zones. One Unforgettable Journey.</h2>
       <div class="two">
         <div class="list">
-          <div class="li"><div class="icon">🐅</div><div><b>Wild Heart</b> — Tiger encounters, VR safaris, ranger storytelling. Crisp wildlife audio, textured relief maps.</div></div>
-          <div class="li"><div class="icon">🕌</div><div><b>Timeless Heritage</b> — Sandstone textures, lightboxes of temples & forts, quick AR walk-throughs of Khajuraho or Gwalior Fort.</div></div>
+          <div class="li"><div class="icon">🐅</div><div><b>Wild Heart — Wildlife & Nature</b><br>Tiger encounters, VR safaris, ranger storytelling. Crisp wildlife audio, textured relief maps. Featured destinations: Kanha, Bandhavgarh, Satpura.</div></div>
+          <div class="li"><div class="icon">🕌</div><div><b>Timeless Heritage — Architecture</b><br>Sandstone textures, lightboxes of temples & forts, AR walk-throughs of Khajuraho and Gwalior Fort. Touch-to-explore ancient monuments.</div></div>
         </div>
         <div class="list">
-          <div class="li"><div class="icon">🪔</div><div><b>Soul of Spirituality</b> — Soft glow, incense wafts, meditation corner, projection mapping on prayer wheels or mandalas.</div></div>
-          <div class="li"><div class="icon">🎨</div><div><b>Artisan Pulse</b> — Live craft demos on rotation (Chanderi weaving, Gond art), touch-and-feel textile samples, mini folklore vignettes.</div></div>
+          <div class="li"><div class="icon">🪔</div><div><b>Soul of Spirituality — Wellness</b><br>Soft glow, incense wafts, meditation corner, projection mapping on prayer wheels and mandalas. Features Ujjain, Omkareshwar, Amarkantak.</div></div>
+          <div class="li"><div class="icon">🎨</div><div><b>Artisan Pulse — Culture & Craft</b><br>Live craft demos on rotation (Chanderi weaving, Gond art), touch-and-feel textile samples, mini folklore vignettes, cuisine videos.</div></div>
         </div>
       </div>
       <hr />
-      <p><b>Map Island (center):</b> Interactive 3D topographical display where visitors tap a region and receive a personalised itinerary QR.</p>
+      <p><b>Map Island (center):</b> Interactive 3D topographical display where visitors tap a region and receive a personalised itinerary QR code to save instantly to their phone.</p>
+    </section>
+
+    <section id="entry-experience" class="card">
+      <div class="eyebrow">First Impressions</div>
+      <h2>Create an Immersive Entry Experience</h2>
+      <p>The entry facade is your first—and most critical—opportunity to stop traffic and signal that this is not just another booth.</p>
+      <div class="list">
+        <div class="li"><div class="icon">🏛️</div><div><b>Architectural Facade:</b> Build an entrance inspired by Khajuraho temples, Sanchi Stupa, or Bhimbetka rock art using modern materials with dramatic lighting. Make it visible from 50+ meters away.</div></div>
+        <div class="li"><div class="icon">🎵</div><div><b>Sensory Tunnel:</b> Create a short entry passage (3-4 meters) with ambient soundscapes—birds, temple bells, rustling forests—that instantly transports visitors into "The Heart of India."</div></div>
+        <div class="li"><div class="icon">🎭</div><div><b>Welcome Moment:</b> Position a cultural ambassador in traditional attire at the threshold to greet visitors with a namaste and brief orientation, setting the tone for an authentic experience.</div></div>
+        <div class="li"><div class="icon">💡</div><div><b>Light Transition:</b> Design lighting that shifts from bright expo hall to warm, theatrical interior—creating psychological separation from the trade show environment.</div></div>
+      </div>
     </section>
 
     <section id="floorplan" class="card">
@@ -659,68 +806,42 @@
       <p class="muted">Clockwise visitor flow. Zones are semi-open with cues for natural progression, concierge desks at core, private meeting pods at periphery.</p>
       <div class="plan">
         <svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
-          <!-- floor / border -->
           <rect x="10" y="10" width="620" height="380" fill="#14110d" stroke="#444" stroke-width="2" rx="4"/>
-
-          <!-- Entry (bottom center) -->
           <rect x="270" y="355" width="100" height="30" fill="#ffb457" stroke="#ff8c1a" stroke-width="2" rx="6"/>
           <text x="320" y="375" text-anchor="middle" font-size="14" font-weight="bold" fill="#1b1308">ENTRY</text>
-          
-          <!-- Hero Reel Wall (bottom) -->
           <rect x="35" y="310" width="570" height="35" fill="#222" stroke="#ffd097" stroke-width="2" rx="6"/>
           <text x="320" y="332" text-anchor="middle" font-size="12" fill="#ffd7a6">HERO VIDEO REEL (4K, 3-min loop)</text>
-
-          <!-- Wild Heart (left) -->
           <rect x="35" y="55" width="120" height="230" fill="rgba(139,195,74,.15)" stroke="#8bc34a" stroke-width="2" rx="8"/>
           <text x="95" y="80" text-anchor="middle" font-size="13" font-weight="bold" fill="#c6ff8f">🐅 WILD HEART</text>
           <text x="95" y="100" text-anchor="middle" font-size="10" fill="#e0f2cf">VR Safari Station</text>
           <text x="95" y="115" text-anchor="middle" font-size="10" fill="#e0f2cf">Relief Map Display</text>
           <text x="95" y="130" text-anchor="middle" font-size="10" fill="#e0f2cf">Ranger Storytelling</text>
-
-          <!-- Timeless Heritage (top-left) -->
           <rect x="175" y="35" width="140" height="100" fill="rgba(228,195,155,.15)" stroke="#e4c39b" stroke-width="2" rx="8"/>
           <text x="245" y="60" text-anchor="middle" font-size="13" font-weight="bold" fill="#ffd7a6">🕌 TIMELESS</text>
           <text x="245" y="75" text-anchor="middle" font-size="13" font-weight="bold" fill="#ffd7a6">HERITAGE</text>
           <text x="245" y="95" text-anchor="middle" font-size="10" fill="#e0d5c8">Lightboxes • AR portals</text>
-
-          <!-- Soul of Spirituality (top-right) -->
           <rect x="335" y="35" width="140" height="100" fill="rgba(255,183,77,.15)" stroke="#ffb74d" stroke-width="2" rx="8"/>
           <text x="405" y="60" text-anchor="middle" font-size="13" font-weight="bold" fill="#ffe0b2">🪔 SOUL OF</text>
           <text x="405" y="75" text-anchor="middle" font-size="13" font-weight="bold" fill="#ffe0b2">SPIRITUALITY</text>
           <text x="405" y="95" text-anchor="middle" font-size="10" fill="#f3d4a4">Meditation • Projections</text>
-
-          <!-- Artisan Pulse (right) -->
           <rect x="495" y="55" width="120" height="230" fill="rgba(255,112,67,.15)" stroke="#ff7043" stroke-width="2" rx="8"/>
           <text x="555" y="80" text-anchor="middle" font-size="13" font-weight="bold" fill="#ffccbc">🎨 ARTISAN</text>
           <text x="555" y="95" text-anchor="middle" font-size="13" font-weight="bold" fill="#ffccbc">PULSE</text>
           <text x="555" y="115" text-anchor="middle" font-size="10" fill="#ffe0d8">Live Craft Demos</text>
           <text x="555" y="130" text-anchor="middle" font-size="10" fill="#ffe0d8">Textile Touch Wall</text>
-
-          <!-- Map Island (center) -->
           <circle cx="320" cy="200" r="50" fill="rgba(255,180,87,.25)" stroke="#ffb457" stroke-width="3"/>
           <text x="320" y="195" text-anchor="middle" font-size="13" font-weight="bold" fill="#ffd097">MAP ISLAND</text>
           <text x="320" y="210" text-anchor="middle" font-size="10" fill="#e4c39b">(Interactive)</text>
-
-          <!-- Meeting Pods (left & right side) -->
           <ellipse cx="200" cy="240" rx="35" ry="25" fill="rgba(255,255,255,.1)" stroke="#888" stroke-width="1" rx="4"/>
           <text x="200" y="245" text-anchor="middle" font-size="9" fill="#ccc">POD 1</text>
-
           <ellipse cx="440" cy="240" rx="35" ry="25" fill="rgba(255,255,255,.1)" stroke="#888" stroke-width="1" rx="4"/>
           <text x="440" y="245" text-anchor="middle" font-size="9" fill="#ccc">POD 2</text>
-
-          <!-- Concierge / Trade Desk (top center) -->
           <rect x="245" y="155" width="150" height="30" fill="rgba(255,193,7,.2)" stroke="#ffc107" stroke-width="2" rx="6"/>
           <text x="320" y="173" text-anchor="middle" font-size="11" font-weight="bold" fill="#ffe082">CONCIERGE DESK</text>
-
-          <!-- Storage / Staff Area (bottom left corner) -->
           <rect x="30" y="295" width="80" height="40" fill="rgba(255,255,255,.05)" stroke="#555" stroke-width="1" stroke-dasharray="3,3" rx="4"/>
           <text x="70" y="318" text-anchor="middle" font-size="9" fill="#999">STORAGE</text>
-
-          <!-- Staff Entrance (bottom right corner) -->
           <rect x="530" y="355" width="80" height="30" fill="rgba(255,255,255,.05)" stroke="#555" stroke-width="1" rx="4"/>
           <text x="570" y="373" text-anchor="middle" font-size="10" fill="#999">STAFF</text>
-
-          <!-- Legend (small note) -->
           <text x="320" y="25" text-anchor="middle" font-size="10" fill="#888">Arrows indicate clockwise circulation →</text>
         </svg>
       </div>
@@ -729,20 +850,20 @@
 
     <section id="tech" class="card">
       <div class="eyebrow">Interactive Layer</div>
-      <h2>Technology that invites play (and captures leads)</h2>
+      <h2>Technology that Invites Play (and Captures Leads)</h2>
       <div class="two">
         <div class="list">
-          <div class="li"><div class="icon">🎧</div><div><b>Spatial audio beds</b> per zone; soft cross-fades avoid sound bleed.</div></div>
-          <div class="li"><div class="icon">🕶️</div><div><b>VR mini-experiences</b> (60–90s) with queue displays; sanitize & fast reset.</div></div>
-          <div class="li"><div class="icon">📱</div><div><b>QR itineraries</b> that save to phone (wildlife circuits, heritage trails, spiritual retreats).</div></div>
-          <div class="li"><div class="icon">🗂️</div><div><b>Trade Download Hub</b> (rate cards, media kit, high-res imagery) gated by email.</div></div>
-          <div class="li"><div class="icon">🎥</div><div><b>4K hero reel</b> cut to music with subtle captioning for noisy halls.</div></div>
+          <div class="li"><div class="icon">🕶️</div><div><b>AR/VR Experiences:</b> "Fly over Madhya Pradesh" — immersive 90-second virtual flights showing wildlife, temples, and rivers. Queue displays show wait times; sanitize & fast-reset protocols.</div></div>
+          <div class="li"><div class="icon">🎧</div><div><b>Spatial audio beds</b> per zone with soft cross-fades to avoid sound bleed. Each zone has its own soundtrack—jungle sounds, temple chants, folk music.</div></div>
+          <div class="li"><div class="icon">📱</div><div><b>QR itineraries</b> on table tent cards that save to phone (wildlife circuits, heritage trails, spiritual retreats). Scan, customize, and receive via email.</div></div>
+          <div class="li"><div class="icon">🖥️</div><div><b>Large vertical LED wall</b> displaying cinematic 4K visuals of MP with emotional music, subtle captions for noisy halls. Think Tourism Australia or Visit Scotland quality.</div></div>
         </div>
         <div class="list">
-          <div class="li"><div class="icon">📊</div><div><b>Live analytics screen</b>: footfall, dwell time, QR scans; helps on-ground optimization.</div></div>
-          <div class="li"><div class="icon">🧭</div><div><b>Wayfinding beacons</b> (optional): light cues sync with hero reel to "guide" flow.</div></div>
-          <div class="li"><div class="icon">💬</div><div><b>WhatsApp follow-ups</b> post-scan (opt-in): send saved journeys & contacts.</div></div>
-          <div class="li"><div class="icon">🔐</div><div><b>Privacy-first consent</b> on tablets; export to CRM nightly.</div></div>
+          <div class="li"><div class="icon">🗂️</div><div><b>Trade Download Hub:</b> Rate cards, media kit, high-res imagery, video assets—all gated by email capture for lead generation.</div></div>
+          <div class="li"><div class="icon">📊</div><div><b>Live analytics screen</b> for staff: footfall, dwell time by zone, QR scans. Helps optimize on-ground tactics in real-time.</div></div>
+          <div class="li"><div class="icon">🧭</div><div><b>Wayfinding beacons:</b> Optional light cues that sync with hero reel to "guide" visitor flow through zones.</div></div>
+          <div class="li"><div class="icon">💬</div><div><b>WhatsApp follow-ups</b> post-scan (opt-in): send saved journeys, contacts, and special offers to maintain engagement.</div></div>
+          <div class="li"><div class="icon">🔐</div><div><b>Privacy-first consent</b> on tablets at entry; export leads to CRM nightly with full GDPR compliance.</div></div>
         </div>
       </div>
     </section>
@@ -752,16 +873,97 @@
       <h2>Lighting & Materials for Cinematic Depth</h2>
       <div class="two">
         <div class="list">
-          <div class="li"><div class="icon">💡</div><div><b>Layered lighting:</b> warm amber key lights (2700–3000K), cool rim lights for separation, dimmable profiles per zone.</div></div>
-          <div class="li"><div class="icon">🧱</div><div><b>Sandstone textures</b> with micro-relief; jute/bamboo trims; matte finishes to prevent glare.</div></div>
-          <div class="li"><div class="icon">🖼️</div><div>Replace static posters with <b>animated lightboxes</b> (low-power LED fabrics).</div></div>
+          <div class="li"><div class="icon">💡</div><div><b>Layered lighting:</b> Warm amber key lights (2700–3000K) for heritage feel, cool rim lights for depth and separation, dimmable profiles per zone allow mood shifts throughout the day.</div></div>
+          <div class="li"><div class="icon">🧱</div><div><b>Sandstone textures</b> with micro-relief panels; jute and bamboo trims; matte finishes to prevent harsh glare under expo lighting.</div></div>
+          <div class="li"><div class="icon">🖼️</div><div>Replace static posters with <b>animated lightboxes</b> using low-power LED fabric technology—images slowly morph and transition.</div></div>
+          <div class="li"><div class="icon">🪑</div><div><b>Handcrafted furniture:</b> Replace café tables with custom cane or carved wooden sets that echo MP's rural charm while maintaining ergonomic comfort.</div></div>
         </div>
         <div class="list">
-          <div class="li"><div class="icon">🌿</div><div><b>Planters & greens</b> to soften edges; use fragrant but hypo-allergenic varieties.</div></div>
-          <div class="li"><div class="icon">🔊</div><div>Acoustic felt behind cladding to absorb mid-high noise and make conversations easier.</div></div>
-          <div class="li"><div class="icon">♻️</div><div><b>Modular, reusable frames</b> to reduce waste and enable multi-expo use.</div></div>
+          <div class="li"><div class="icon">🌿</div><div><b>Planters & greens</b> to soften edges and add life; use fragrant but hypo-allergenic varieties (avoid strong scents that clash).</div></div>
+          <div class="li"><div class="icon">🔊</div><div>Acoustic felt panels behind cladding to absorb mid-high frequency noise, making conversations easier in busy expo environment.</div></div>
+          <div class="li"><div class="icon">♻️</div><div><b>Modular, reusable frames</b> with magnetic skins for graphics—reduces waste and enables multi-expo use across different markets.</div></div>
+          <div class="li"><div class="icon">🎨</div><div><b>Textural variety:</b> Mix materials—rough stone, smooth fabric, woven bamboo—to create visual and tactile interest that invites touch.</div></div>
         </div>
       </div>
+    </section>
+
+    <section id="staff-presentation" class="card">
+      <div class="eyebrow">Human Experience</div>
+      <h2>Staff Presentation & Cultural Ambassadors</h2>
+      <p>Your team is the living embodiment of Madhya Pradesh. Their appearance, knowledge, and energy directly impact visitor perception and engagement levels.</p>
+      
+      <h3>Uniform & Identity System</h3>
+      <div class="list">
+        <div class="li"><div class="icon">👔</div><div><b>Coordinated Attire:</b> Design a professional uniform system inspired by MP's textile heritage—Chanderi silk accents, Maheshwari weave patterns, or contemporary cuts in traditional colors (saffron, white, earthy tones).</div></div>
+        <div class="li"><div class="icon">🏷️</div><div><b>Name Badges with Roles:</b> Clear, well-designed badges indicating role (Greeter, Storyteller, Trade Specialist, Cultural Ambassador) and language expertise (critical for international expo).</div></div>
+        <div class="li"><div class="icon">📱</div><div><b>Digital Tools:</b> Equip all staff with tablets loaded with destination content, booking systems, and CRM for instant lead capture. Train them on usage before expo day.</div></div>
+        <div class="li"><div class="icon">🎓</div><div><b>Pre-Event Training:</b> Mandatory 2-day immersion covering MP's USPs, storytelling techniques, lead qualification, and cultural sensitivity for international audiences.</div></div>
+      </div>
+
+      <h3>Cultural Ambassadors from Diverse Segments</h3>
+      <div class="two">
+        <div class="list">
+          <div class="li"><div class="icon">🎨</div><div><b>Artisans & Craftspeople:</b> Rotate live demonstrations—Gond painters, Chanderi weavers, Dhokra metal casters. Their presence adds authenticity and creates photo-worthy moments.</div></div>
+          <div class="li"><div class="icon">🦁</div><div><b>Forest Rangers & Naturalists:</b> Real guides from Kanha or Bandhavgarh who can share firsthand tiger tracking stories. Wear field uniforms with patches for credibility.</div></div>
+          <div class="li"><div class="icon">🙏</div><div><b>Spiritual Guides:</b> Trained guides from Ujjain or Amarkantak who can explain spiritual tourism offerings with depth and sensitivity.</div></div>
+          <div class="li"><div class="icon">🎭</div><div><b>Performing Artists:</b> Folk musicians (percussion, flute) for hourly 3-minute performances that naturally draw crowds. Keep it short and scheduled.</div></div>
+          <div class="li"><div class="icon">🍛</div><div><b>Culinary Representatives:</b> Chef or food expert who can speak to MP's cuisine—dal bafla, poha-jalebi, tribal food traditions—with small tasting samples.</div></div>
+        </div>
+        <div class="list">
+          <div class="li"><div class="icon">🏨</div><div><b>Hotel & Safari Operators:</b> Representatives from key properties (Taj Safaris, heritage hotels) for high-value trade conversations and commission discussions.</div></div>
+          <div class="li"><div class="icon">🏡</div><div><b>Homestay & Village Stay Hosts:</b> Real hosts from rural MP who can share authentic stories about village life, organic farming, tribal customs, and immersive cultural experiences.</div></div>
+          <div class="li"><div class="icon">🏰</div><div><b>Heritage Property Owners:</b> Descendants or caretakers of palaces, havelis, and forts converted to stays—can explain architectural history, royal lineage, and restoration journeys.</div></div>
+          <div class="li"><div class="icon">🌾</div><div><b>Farm & Eco-Lodge Representatives:</b> Hosts from agro-tourism farms, organic plantations, or eco-lodges who can showcase sustainable tourism, farm-to-table experiences, and nature immersion.</div></div>
+          <div class="li"><div class="icon">⛺</div><div><b>Adventure & Camping Specialists:</b> Guides offering river rafting (Betwa), trekking (Pachmarhi), camping experiences who can speak to adventure tourism opportunities with safety credentials.</div></div>
+          <div class="li"><div class="icon">🚂</div><div><b>Unique Experience Curators:</b> Representatives from special programs—heritage walks, photography tours, birding expeditions, cycling trails, tribal immersion programs—highlighting MP's experiential diversity.</div></div>
+        </div>
+      </div>
+
+      <h3>Scheduling & Rotation</h3>
+      <div class="list">
+        <div class="li"><div class="icon">⏰</div><div><b>Shift System:</b> Avoid staff fatigue with 3-4 hour shifts maximum. Fresh energy is crucial for maintaining visitor engagement throughout the day.</div></div>
+        <div class="li"><div class="icon">🔄</div><div><b>Ambassador Rotation:</b> Schedule artisan/performer appearances at :00, :20, :40 past each hour for consistent traffic spikes and natural gathering moments.</div></div>
+        <div class="li"><div class="icon">📋</div><div><b>Daily Briefings:</b> 15-minute team huddle before doors open to review previous day's metrics, adjust tactics, and align on messaging priorities.</div></div>
+      </div>
+    </section>
+
+    <section id="artifacts" class="card">
+      <div class="eyebrow">Physical Storytelling</div>
+      <h2>Artifacts, Displays & Mannequins</h2>
+      <p>Tangible objects create memorable touchpoints and give visitors permission to linger, explore, and ask questions.</p>
+      
+      <h3>Artifact Showcase Strategy</h3>
+      <div class="list">
+        <div class="li"><div class="icon">🏺</div><div><b>Textile Display Wall:</b> Suspended fabric samples of Chanderi silk, Maheshwari weave, and Bagh print behind protective plexiglass with "Touch Me" samples at waist height. Include QR codes linking to artisan villages.</div></div>
+        <div class="li"><div class="icon">🗿</div><div><b>Replica Artifacts:</b> High-quality replicas of Bhimbetka rock art, miniature temple carvings (Khajuraho style), or Sanchi Stupa elements. Use museum-quality lighting and labels.</div></div>
+        <div class="li"><div class="icon">📿</div><div><b>Tribal Craft Collection:</b> Curated display of Gond paintings, Dhokra metal work, terracotta pieces, bamboo crafts—arranged by region with maker credits visible.</div></div>
+        <div class="li"><div class="icon">🦴</div><div><b>Natural History Elements:</b> Tiger cast paw prints, deer antlers, medicinal plant samples, forest floor diorama—all properly labeled with conservation messaging.</div></div>
+        <div class="li"><div class="icon">🎪</div><div><b>Festival Props:</b> Authentic items from MP's festivals—Khajuraho Dance Festival costumes, Tansen Music Festival instruments, tribal masks from local celebrations.</div></div>
+      </div>
+
+      <h3>Mannequin & Costume Displays</h3>
+      <div class="two">
+        <div class="list">
+          <div class="li"><div class="icon">👘</div><div><b>Traditional Attire:</b> Mannequins in authentic regional dress—tribal costumes from Baiga/Gond communities, royal attire from Gwalior/Orchha courts, spiritual garments from Ujjain temples.</div></div>
+          <div class="li"><div class="icon">🎭</div><div><b>Performance Costumes:</b> Display classical dance costumes (Kathak, folk dances) with small video screens showing actual performances from festivals.</div></div>
+          <div class="li"><div class="icon">🧵</div><div><b>Weaving Process Display:</b> Show the journey from raw silk/cotton → dyeing → weaving → finished Chanderi saree with step-by-step visuals and actual materials.</div></div>
+        </div>
+        <div class="list">
+          <div class="li"><div class="icon">🏹</div><div><b>Wildlife Ranger Setup:</b> Mannequin in full field gear (khaki uniform, binoculars, tracking equipment) positioned in the Wildlife zone with backdrop of Kanha forest.</div></div>
+          <div class="li"><div class="icon">⚔️</div><div><b>Historical Warriors:</b> Replica armor or weapons from Bundela dynasties or Gondwana kingdoms—creates dramatic photo opportunities and conversation starters.</div></div>
+          <div class="li"><div class="icon">🎨</div><div><b>Live Artisan Station:</b> Not just displays—active workspace where visiting artisans create in real-time, with their tools, materials, and works-in-progress visible.</div></div>
+        </div>
+      </div>
+
+      <h3>Interactive Object Experiences</h3>
+      <div class="list">
+        <div class="li"><div class="icon">👋</div><div><b>Touch & Feel Stations:</b> Designated areas where visitors can handle textile samples, feel stone textures, smell spices, or examine craft tools (all cleanable and durable).</div></div>
+        <div class="li"><div class="icon">🔊</div><div><b>Audio-Enhanced Objects:</b> Use NFC or button-activated audio that plays when visitors approach certain artifacts—hear artisan stories, forest sounds, or historical context.</div></div>
+        <div class="li"><div class="icon">📸</div><div><b>Photo Opportunities:</b> Strategically placed mannequins and artifacts create natural photo ops with event hashtag signage: #MPTheHeartOfIndia #FindYourHeartInMP</div></div>
+        <div class="li"><div class="icon">🛍️</div><div><b>Take-Home Samples:</b> Small craft samples or printed miniatures of artifacts as giveaways—extends the experience beyond the expo and serves as conversation starters.</div></div>
+      </div>
+
+      <p class="muted"><small><b>Important:</b> All artifacts must have proper provenance documentation, be insured for transit/display, and respect cultural sensitivity. Work with MP Tourism & Culture departments for authentic sourcing and approvals.</small></p>
     </section>
 
     <section id="flow" class="card">
@@ -769,25 +971,26 @@
       <h2>Visitor Flow, Seating & Teaming</h2>
       <div class="two">
         <div class="list">
-          <div class="li"><div class="icon">➡️</div><div><b>Experience-first path:</b> entry → hero reel → loop around 4 zones → map island → meeting pods.</div></div>
-          <div class="li"><div class="icon">🪑</div><div><b>Conversation pods</b> (4pax bistro round + power + QR tent cards). Keep "café spread" out of main sightline.</div></div>
-          <div class="li"><div class="icon">👥</div><div><b>Roles:</b> Greeter (traffic stop), Storyteller (zones), Ranger (wildlife), Concierge (trade), Runner (ops).</div></div>
+          <div class="li"><div class="icon">➡️</div><div><b>Experience-first path:</b> Entry tunnel → hero reel → loop clockwise through 4 zones → map island → meeting pods. Clear floor motifs guide circulation.</div></div>
+          <div class="li"><div class="icon">🪑</div><div><b>Meeting pods repositioned:</b> Move café tables to periphery (4-person bistro rounds with power outlets + QR tent cards). Keep "café spread" out of main sightlines.</div></div>
+          <div class="li"><div class="icon">👥</div><div><b>Role assignments:</b> Greeter (traffic stop at entry), Storytellers (zone hosts), Ranger (wildlife expert), Concierge (trade desk), Runner (ops/supplies), Cultural Ambassadors (rotating).</div></div>
         </div>
         <div class="list">
-          <div class="li"><div class="icon">🧭</div><div>Clear micro-wayfinding on floor (subtle motifs) to indicate clockwise circulation.</div></div>
-          <div class="li"><div class="icon">🍵</div><div>Hidden pantry & storage near staff entrance; keep front-of-house pristine.</div></div>
-          <div class="li"><div class="icon">🧽</div><div>VR sanitization & fast-reset protocol; schedule five 10-min quiet resets daily.</div></div>
+          <div class="li"><div class="icon">🧭</div><div>Clear micro-wayfinding on floor with subtle MP motifs (tiger paw prints, lotus patterns) to indicate clockwise circulation without being heavy-handed.</div></div>
+          <div class="li"><div class="icon">🍵</div><div>Hidden pantry & storage near staff entrance; rigorous "keep front-of-house pristine" protocol with 2-hour cleaning cycles.</div></div>
+          <div class="li"><div class="icon">🧽</div><div>VR headset sanitization & fast-reset protocol; schedule five 10-minute "quiet reset" periods daily for tech checks and space refresh.</div></div>
         </div>
       </div>
     </section>
 
     <section id="programming" class="card">
       <div class="eyebrow">Live Moments</div>
-      <h2>Micro-programming that draws crowds every hour</h2>
+      <h2>Micro-Programming that Draws Crowds Every Hour</h2>
       <div class="list">
-        <div class="li"><div class="icon">⏱️</div><div><b>00:00, :20, :40 past the hour</b> — 3-min folk snippet (percussion/flute) + single craft technique demo.</div></div>
-        <div class="li"><div class="icon">📸</div><div><b>Photo cue</b> immediately after each snippet; emcee invites quick selfies → share with event hashtag.</div></div>
-        <div class="li"><div class="icon">🎤</div><div><b>2× daily media window</b> for interviews with artisans/rangers/tourism reps (pre-lit corner).</div></div>
+        <div class="li"><div class="icon">⏱️</div><div><b>Hourly performances at :00, :20, :40</b> — 3-minute folk music snippet (percussion/flute) paired with single craft technique demo. Keeps it fresh without overwhelming.</div></div>
+        <div class="li"><div class="icon">📸</div><div><b>Photo cue immediately after:</b> Emcee invites quick selfies with performers/artisans → share with event hashtag #MPTheHeartOfIndia. Creates natural UGC drumbeat.</div></div>
+        <div class="li"><div class="icon">🎤</div><div><b>2× daily media windows:</b> Pre-scheduled slots (11am, 3pm) for journalist interviews with artisans, rangers, tourism officials. Pre-lit corner with branded backdrop ready.</div></div>
+        <div class="li"><div class="icon">🎪</div><div><b>Special demonstrations:</b> Gond painting session, Chanderi weaving demo, tribal dance workshop—rotated across expo days to maintain freshness for repeat visitors.</div></div>
       </div>
     </section>
 
@@ -796,14 +999,14 @@
       <h2>Brand Story, Copy & CTAs</h2>
       <div class="two">
         <div class="list">
-          <div class="li"><div class="icon">🧡</div><div>Main line: <b>"Madhya Pradesh — The Heart Finds Home."</b></div></div>
-          <div class="li"><div class="icon">🪔</div><div>Subheads per zone (short, poetic), 6–9 words max, readable from 8–10m.</div></div>
-          <div class="li"><div class="icon">📍</div><div>Itinerary CTAs: "2-Day Spiritual Loop · Scan to Save", "4-Day Tiger Circuit · Scan to Plan".</div></div>
+          <div class="li"><div class="icon">🧡</div><div>Main tagline: <b>"Madhya Pradesh — The Heart Finds Home."</b> Secondary: "From the Jungles of Kipling to the Temples of Khajuraho"</div></div>
+          <div class="li"><div class="icon">🪔</div><div>Zone subheads (short, poetic, 6–9 words max, readable from 8–10m): "Where Tigers Roam Free" / "Temples That Touch the Sky" / "Where Souls Find Peace"</div></div>
+          <div class="li"><div class="icon">📍</div><div>Itinerary CTAs on QR tent cards: "2-Day Spiritual Loop · Scan to Save" / "4-Day Tiger Circuit · Scan to Plan" / "Heritage Trail · Your Journey Starts Here"</div></div>
         </div>
         <div class="list">
-          <div class="li"><div class="icon">📦</div><div><b>Trade packs:</b> rate cards, circuit maps, season windows, conservation notes, AR links.</div></div>
-          <div class="li"><div class="icon">🤝</div><div>Partnership wall: "Stay · Safari · Heritage · Wellness" logos—small, neat, consistent.</div></div>
-          <div class="li"><div class="icon">🧭</div><div>End-of-journey CTA: concierge desk with "Plan Your Circuit in 3 Minutes".</div></div>
+          <div class="li"><div class="icon">📦</div><div><b>Trade resource packs:</b> Rate cards, circuit maps, season calendars, conservation notes, AR experience links, high-res media gallery—all downloadable with email gate.</div></div>
+          <div class="li"><div class="icon">🤝</div><div>Partnership wall with logo grid: "Stay · Safari · Heritage · Wellness" partners—small, neat, consistent sizing. Include QR for partner contact directory.</div></div>
+          <div class="li"><div class="icon">🧭</div><div>End-of-journey CTA at concierge desk: <b>"Plan Your Circuit in 3 Minutes"</b> — trained staff with tablets for instant itinerary creation and booking referrals.</div></div>
         </div>
       </div>
     </section>
@@ -813,14 +1016,14 @@
       <h2>Measurement & Optimization</h2>
       <div class="two">
         <div class="list">
-          <div class="li"><div class="icon">👣</div><div>Overhead sensors for <b>footfall</b>; zone heatmaps.</div></div>
-          <div class="li"><div class="icon">⏳</div><div>Dwell time per zone; goal: <b>6–8 minutes</b> avg.</div></div>
-          <div class="li"><div class="icon">📲</div><div>QR scan → save rate; goal: <b>20–30%</b> of visitors.</div></div>
+          <div class="li"><div class="icon">👣</div><div>Overhead sensors for <b>footfall tracking</b> with zone-specific heatmaps. Monitor peak hours and adjust staffing accordingly.</div></div>
+          <div class="li"><div class="icon">⏳</div><div>Dwell time measurement per zone; goal: <b>6–8 minutes average</b> total pavilion time vs. industry standard 90 seconds.</div></div>
+          <div class="li"><div class="icon">📲</div><div>QR scan → save rate tracking; goal: <b>20–30%</b> of visitors. A/B test different CTA placements and messaging.</div></div>
         </div>
         <div class="list">
-          <div class="li"><div class="icon">🧾</div><div>Qualified trade leads captured; goal: uplift <b>+25–30%</b>.</div></div>
-          <div class="li"><div class="icon">📣</div><div>UGC count from photo booth; target a steady drumbeat each hour.</div></div>
-          <div class="li"><div class="icon">🔁</div><div>Daily retro: update playlist, lighting emphasis, and staffing based on data.</div></div>
+          <div class="li"><div class="icon">🧾</div><div>Qualified trade leads captured with scoring system; goal: <b>+25–30% uplift</b> vs. previous expo with higher lead quality scores.</div></div>
+          <div class="li"><div class="icon">📣</div><div>User-generated content count from photo booth and hashtag tracking; target steady social drumbeat throughout expo duration.</div></div>
+          <div class="li"><div class="icon">🔁</div><div>Daily retrospective at 6pm: review dashboard, update audio playlist, shift lighting emphasis, reallocate staff based on actual behavior patterns.</div></div>
         </div>
       </div>
     </section>
@@ -829,9 +1032,10 @@
       <div class="eyebrow">Responsibility</div>
       <h2>Sustainability & Reuse</h2>
       <div class="list">
-        <div class="li"><div class="icon">🧩</div><div>Modular frames & magnetic skins for multi-expo reuse; crate-ready.</div></div>
-        <div class="li"><div class="icon">🔋</div><div>Low-power LED fabrics; timed dimming during off-peak hours.</div></div>
-        <div class="li"><div class="icon">🌱</div><div>Local craft sourcing with maker credits; compostable tasting ware.</div></div>
+        <div class="li"><div class="icon">🧩</div><div>Modular frames with magnetic graphic skins for multi-expo reuse across different markets; crate-ready with detailed assembly documentation.</div></div>
+        <div class="li"><div class="icon">🔋</div><div>Low-power LED fabric technology for lightboxes; timed dimming during off-peak hours; motion-activated displays in low-traffic zones.</div></div>
+        <div class="li"><div class="icon">🌱</div><div>Local craft sourcing with visible maker credits and commission model; compostable tasting ware for food demos; zero single-use plastic policy.</div></div>
+        <div class="li"><div class="icon">♻️</div><div>Post-event artifact donation to MP tourism offices or cultural centers; furniture repurposed for permanent tourism centers; graphics recycled or archived.</div></div>
       </div>
     </section>
 
@@ -842,30 +1046,103 @@
         <div>
           <h3>Budget Buckets (indicative %)</h3>
           <div class="list">
-            <div class="li"><div class="icon">🎬</div><div>Media (hero reel, lightboxes) — <b>22–26%</b></div></div>
-            <div class="li"><div class="icon">🏗️</div><div>Structure & finishes — <b>28–32%</b></div></div>
-            <div class="li"><div class="icon">🕶️</div><div>AR/VR & sensors — <b>14–18%</b></div></div>
-            <div class="li"><div class="icon">💡</div><div>Lighting & audio — <b>10–12%</b></div></div>
-            <div class="li"><div class="icon">👥</div><div>Talent, ops & programming — <b>12–15%</b></div></div>
-            <div class="li"><div class="icon">📦</div><div>Logistics, storage, contingency — <b>8–10%</b></div></div>
+            <div class="li"><div class="icon">🎬</div><div>Media production (hero reel, lightboxes, AR/VR content) — <b>22–26%</b></div></div>
+            <div class="li"><div class="icon">🏗️</div><div>Structure & finishes (facade, flooring, cladding) — <b>28–32%</b></div></div>
+            <div class="li"><div class="icon">🕶️</div><div>AR/VR hardware & sensors — <b>14–18%</b></div></div>
+            <div class="li"><div class="icon">💡</div><div>Lighting & audio systems — <b>10–12%</b></div></div>
+            <div class="li"><div class="icon">👥</div><div>Talent, ops, training & programming — <b>12–15%</b></div></div>
+            <div class="li"><div class="icon">📦</div><div>Logistics, storage, insurance, contingency — <b>8–10%</b></div></div>
           </div>
         </div>
         <div>
-          <h3>Timeline (fast-track)</h3>
+          <h3>Timeline (8-week fast-track)</h3>
           <div class="list">
-            <div class="li"><div class="icon">🗓️</div><div><b>Week 1–2:</b> final concept, hero storyboard, BOM, vendor lock.</div></div>
-            <div class="li"><div class="icon">🧰</div><div><b>Week 3–6:</b> fabrication, media production, AR/VR builds.</div></div>
-            <div class="li"><div class="icon">🧪</div><div><b>Week 7:</b> dry-run assembly, lighting program, safety & flow tests.</div></div>
-            <div class="li"><div class="icon">🚚</div><div><b>Week 8:</b> ship & on-site build; day-0 rehearsal + analytics setup.</div></div>
+            <div class="li"><div class="icon">🗓️</div><div><b>Week 1–2:</b> Final concept approval, hero reel storyboard, BOM finalization, vendor selection & contracts.</div></div>
+            <div class="li"><div class="icon">🧰</div><div><b>Week 3–6:</b> Fabrication, media production, AR/VR builds, artifact sourcing, staff hiring & training.</div></div>
+            <div class="li"><div class="icon">🧪</div><div><b>Week 7:</b> Dry-run assembly at warehouse, lighting program testing, safety inspections, flow simulation with test visitors.</div></div>
+            <div class="li"><div class="icon">🚚</div><div><b>Week 8:</b> Ship & on-site build; day-0 full rehearsal with all staff; analytics setup & tech QA; final sign-offs.</div></div>
           </div>
         </div>
       </div>
       <hr />
-      <p class="muted"><small>All elements are modular and can scale up/down to the final footprint and budget. Visual identity aligns to "Incredible India" while presenting a distinct Madhya Pradesh soul.</small></p>
+      <p class="muted"><small>All elements are modular and can scale up/down to final footprint and budget. Visual identity aligns with "Incredible India" while presenting distinct Madhya Pradesh soul. Contingency budget (8-10%) covers unforeseen expo requirements and last-minute adjustments.</small></p>
+    </section>
+
+    <section id="comparison" class="card">
+      <div class="eyebrow">Transformation Summary</div>
+      <h2>Before vs. After — The Future-Ready Pavilion</h2>
+      <p>A comprehensive comparison showing the strategic shift from passive information booth to active experiential destination.</p>
+      
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Aspect</th>
+            <th>Current State</th>
+            <th>Recommended Future</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-label="Aspect"><b>Visual Impact</b></td>
+            <td data-label="Current">Informative but flat, 2D backdrop feel</td>
+            <td data-label="Recommended">Multi-sensory, cinematic, immersive depth</td>
+          </tr>
+          <tr>
+            <td data-label="Aspect"><b>Technology</b></td>
+            <td data-label="Current">Minimal (single small screen only)</td>
+            <td data-label="Recommended">AR, VR, touch screens, LED walls, spatial audio</td>
+          </tr>
+          <tr>
+            <td data-label="Aspect"><b>Engagement Style</b></td>
+            <td data-label="Current">Passive viewing, brochure pickup</td>
+            <td data-label="Recommended">Interactive, social media-ready, experiential</td>
+          </tr>
+          <tr>
+            <td data-label="Aspect"><b>Layout Priority</b></td>
+            <td data-label="Current">Meeting-focused (café dominance)</td>
+            <td data-label="Recommended">Experience-first journey, then business</td>
+          </tr>
+          <tr>
+            <td data-label="Aspect"><b>Emotional Pull</b></td>
+            <td data-label="Current">Low to moderate, informational</td>
+            <td data-label="Recommended">Strong cultural & natural immersion</td>
+          </tr>
+          <tr>
+            <td data-label="Aspect"><b>Lighting Design</b></td>
+            <td data-label="Current">Generic overhead, harsh white light</td>
+            <td data-label="Recommended">Layered theatrical, zone-specific moods</td>
+          </tr>
+          <tr>
+            <td data-label="Aspect"><b>Spatial Flow</b></td>
+            <td data-label="Current">Ambiguous, no clear path or zones</td>
+            <td data-label="Recommended">Guided clockwise circulation through 4 distinct zones</td>
+          </tr>
+          <tr>
+            <td data-label="Aspect"><b>Human Element</b></td>
+            <td data-label="Current">Staff in casual dress, static presence</td>
+            <td data-label="Recommended">Coordinated uniforms, cultural ambassadors, live demos</td>
+          </tr>
+          <tr>
+            <td data-label="Aspect"><b>Storytelling</b></td>
+            <td data-label="Current">Generic posters and print materials</td>
+            <td data-label="Recommended">Zone-specific narratives with artifacts, mannequins, media</td>
+          </tr>
+          <tr>
+            <td data-label="Aspect"><b>Lead Capture</b></td>
+            <td data-label="Current">Manual forms, limited tracking</td>
+            <td data-label="Recommended">Digital QR system, automated CRM, analytics dashboard</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="quote-block">
+        <b>Closing Thought:</b> Madhya Pradesh already holds the most diverse tourism offering in India—wildlife, spirituality, culture, and heritage. To match that richness on the world stage, the WTM stall needs to transform from a trade booth into a living experience—a place where global travelers don't just <i>learn about MP</i>, but <i>feel it</i>.
+      </div>
     </section>
 
     <div class="foot">
-      Crafted with ❤️ for Madhya Pradesh Tourism • Design & analysis for high footfall, high recall, high conversion.
+      Expert Analysis & Design by Senior Brand Analyst • Crafted for Madhya Pradesh Tourism<br>
+      Strategy for high footfall, high recall, high conversion at WTM and beyond
     </div>
   </div>
 </main>
